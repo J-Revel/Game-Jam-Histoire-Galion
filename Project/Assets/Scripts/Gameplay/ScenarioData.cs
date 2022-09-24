@@ -69,7 +69,7 @@ public class ScenarioData : MonoBehaviour
     public List<EventData> events = new List<EventData>();
     public int maxChoiceCount = 4;
 
-    public void Start()
+    public void Awake()
     {
         SpreadsheetData sheet = SpreadsheetLoader.Load(spreadsheetAsset);
         choiceEvents = ParseChoiceEvents(sheet);
@@ -87,7 +87,7 @@ public class ScenarioData : MonoBehaviour
     {
         List<ChoiceEventData> result = new List<ChoiceEventData>();
         ChoiceEventData currentEvent = null;
-        for(int line=0; line < sheet.size.x; line++)
+        for(int line=1; line < sheet.size.x; line++)
         {
             if(sheet.data[new Vector2Int(line, 0)].Length > 0)
             {
@@ -105,14 +105,14 @@ public class ScenarioData : MonoBehaviour
                 currentEvent.sections = new ChoiceSectionData[maxChoiceCount];
                 for(int i=0; i<currentEvent.sections.Length; i++)
                     currentEvent.sections[i] = new ChoiceSectionData();
-                choiceEvents.Add(currentEvent);
+                result.Add(currentEvent);
                 currentEvent.text = sheet.data[new Vector2Int(line, 1)];
                 currentEvent.date = sheet.data[new Vector2Int(line, 2)];
             }
             for(int choiceIndex=0; choiceIndex < maxChoiceCount; choiceIndex++)
             {
                 int optionTextColumn = choiceIndex * 2 + 3;
-                int optionEffectColumn = choiceIndex * 2 + 3;
+                int optionEffectColumn = choiceIndex * 2 + 4;
                 if(sheet.data[new Vector2Int(line, optionTextColumn)].Length > 0)
                 {
                     ChoiceEffectData effectData = new ChoiceEffectData();

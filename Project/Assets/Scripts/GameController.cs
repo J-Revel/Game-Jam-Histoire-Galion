@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     //Interactive News
     [SerializeField]
-    private List<InteractiveNews> interactiveNews;
+    private InteractiveNews interactiveNewsPrefab;
     private InteractiveNews currentInteractiveNews;
 
     //Effect
@@ -138,6 +138,8 @@ public class GameController : MonoBehaviour, LogicDelegate
             bool eventConditionFound = false;
             foreach (var condition in animableEvent.conditions)
             {
+                if(condition == null)
+                    continue;
                 int rightGaugeValue = this.state.GetGaugeValue(condition.leftGauge);
                 if (!int.TryParse(condition.rightGauge, out int leftGaugevalue))
                 {
@@ -197,16 +199,11 @@ public class GameController : MonoBehaviour, LogicDelegate
             return;
         }
 
-        // Show next interactive views or show end
-        if (this.state.Progression == this.interactiveNews.Count)
-        {
-            this.End();
-        }
-        else
-        {
-            this.currentInteractiveNews = this.interactiveNews[this.state.Progression];
-            this.currentInteractiveNews.Show();
-        }
+        
+        this.currentInteractiveNews = Instantiate(interactiveNewsPrefab, transform);
+        currentInteractiveNews.gameObject.AddComponent<ChoiceEventDataHolder>().choiceEvent = this.scenarioData.choiceEvents[this.state.Progression];
+
+        this.currentInteractiveNews.Show();
     }
 
     private void End()

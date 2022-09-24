@@ -1,29 +1,29 @@
 id	Texte	Date in game	Contenu [0]	Effets sur les jauges [0]	Contenu [1]	Effets sur les jauges [1]	Contenu [2]	Effets sur les jauges [2]	Contenu [3]	Effets sur les jauges [3]		Liste des variables	Lettre associée	
-t1	{0}, {1} {2} {3}.		À l'été 1571, l'empire Ottoman		envahit		l'île de Chypre		et y installent une administration turque.	I(-1)		Pognon	M	
-					conquiert				et imposent une occupation musulmane aux otochtones orthodoxes.	I(1)		Nationalisme Général	N	
+t1	{0}, {1} {2} {3}.		À l'été 1571, l'empire Ottoman		envahit		l'île de Chypre	rien	et y installent une administration turque.	I(-1)		Pognon	M	
+					conquiert				et imposent une occupation musulmane aux otochtones orthodoxes.	I(1)	0	Nationalisme Général	N	
 					colonise							Nationalisme Grec	NG	
 					prend le contrôle							Nationalisme Turc	NT	
-c1	{0}, {1} {2} {3}.	mars-avril 1955	Les Chypriotes grecs	NG(+5)	forment l'EOKA	rien	, groupe terroriste,	NG(-10), NT(+5)	pour résister à l'occupation britannique et obtenir l'indépendance de Chypre.	N(+10)		Identité	I	0 dans le tuto, 1 si on est Grec, -1 si on est Turc
-			Les resistants Chypriotes grecs	NG(+10)	avec de l'argent et des armes grecques forment l'EOKA	NG(+5)	, milice violente,	NG(-5), NT(+5)	pour mettre fin à l'occupation britannique et obtenir l'union avec la Grèce.	N(+5), NG(+5)				
-			Des indépendantistes	N(+5)	sous la direction avisée du héros Digenis forment l'EOKA	NG(+15)	, organisation militante et paramilitaire,	NG(+5), M(+1)	pour exterminer la population Chypriote turque et imposer la suprématie grecque sur l'île.	NG(+10), NT(-10)				
-			Des Chypriotes grecs	rien	sous l'impulsion du vétéran de la campagne de Grèce, Georges Grivas, forment l'EOKA	NG(+10)	, organisation de résistance armée,	M(+2)	pour imposer militairement coûte que coûte l'union avec la Grèce.	NG(+5), M(+2)				
-c2	{0}, {1} {2} {3}.	novembre 1957	Les Chypriotes turcs	NT(+5)	forment la TMT	rien	, groupe terroriste,	NT(-10), NG(+10)	pour se défendre face aux attaques de l'EOKA.	NG(-10), NT(+10)				
-			Les nationalistes Chypriotes turcs	NT(+10)	sous la direction avisée du militant Denktaş forment la TMT	(NT+10)	, milice violente,	NT-5), N(+5)	pour imposer la séparation de l'île en deux entités mono-ethniques.	N(+15)				
-			Les Turcs	M(+1)	avec de l'argent et des armes turques forment la TMT	NT(+5)	, organisation militante et paramilitaire,	NT(+5), M(+1)	pour imposer les intérêts turcs sur l'île de Chypre.	NT(+10)				
-			Des Chypriotes turcs	rien			, organisation d'auto-défense armée,	N(+10)	pour défendre les intérêts des Chypriotes turcs dans un contexte de montée des violences inter-communautaires.	NT(+5), N(+5), M(+1)				
-c3	{0}, {1} {2} {3}.	25 décembre 1963	Après un contrôle de police qui dégénère	N(+5)	des Chypriotes grecs	NT(+5)	ont ouvert le feu et blessé mortellement	M(+150)	un groupe de jeunes Chypriotes turcs	N(+5)				
-			Après des provocations	N(+10)	des Grecs	NT(+10)	ont tué		d'innocents Chypriotes turcs	NT(+2), NG(+2)				
-			Après un contrôle de police	M(+1)	des policiers Chypriotes grecs	NT(+15)	ont assassiné froidement	N(+5)	un groupe de jeunes délinquants	NG(+5), M(+500)				
-					des officiers de la police de Chypre	N(+5)			les passagers de la voiture					
-c4	{0}, {1} {2} {3}.													
-														
-														
-														
-c5	{0}, {1} {2} {3}.													
-														
-														
-														
-c6	{0}, {1} {2} {3}.	15 novembre 1983	Les Chypriotes turcs		proclament la création de		la République Turque de Chypre du Nord							
-			Rauf Denktaş, héros du nationalisme turc,											
-			Le traitre Rauf Denktaş											
-			Les nationalistes turcs											
+c1	{0}, {1} {2} {3}.	mars-avril 1955	Les Chypriotes grecs	NG(+2), M(+250)	forment l'EOKA	M(+200)	, groupe terroriste,	NG(-10), NT(+10), M(+250)	pour résister à l'occupation britannique et obtenir l'indépendance de Chypre.	N(+10)		Identité	I	0 dans le tuto, 1 si on est Grec, -1 si on est Turc
+			Les resistants Chypriotes grecs	NG(+5), M(+250)	avec de l'argent et des armes grecques, forment l'EOKA	NG(+5)	, milice violente,	NG(-5), NT(+10), M(+250)	pour mettre fin à l'occupation britannique et obtenir l'union avec la Grèce.	N(+5), NG(+5)	1	Progression	P	0 avant le tuto 1 après le tuto 2 après le premier event ...
+			Des indépendantistes	N(+10), M(+250)	sous la direction avisée du héros Digenis, forment l'EOKA	NG(+10)	, organisation militante et paramilitaire,	NG(+5), M(+250)	pour exterminer la population Chypriote turque et imposer la suprématie grecque sur l'île.	NG(+10), NT(-10)				
+			Des Chypriotes grecs	M(+500)	sous l'impulsion du vétéran de la campagne de Grèce, Georges Grivas, forment l'EOKA	NG(+10)	, organisation de résistance armée,	M(+800)	pour imposer militairement coûte que coûte l'union avec la Grèce.	NG(+5)				
+c2	{0}, {1} {2} {3}.	novembre 1957	Les Chypriotes turcs	NT(+5), M(+250)	forment la TMT	M(+500)	, groupe terroriste,	NG(+10)	pour se défendre face aux attaques de l'EOKA.	NG(-10), NT(+5)				
+			Les nationalistes Chypriotes turcs	NT(+10), M(+250)	sous la direction avisée du militant Denktaş forment la TMT	NT(+10), M(+250)	, milice violente,	NT(-5), N(+5)	pour imposer la séparation de l'île en deux entités mono-ethniques.	N(+10)				
+			Les Turcs	M(+250)	avec de l'argent et des armes turques forment la TMT	NT(+5), M(+250)	, organisation militante et paramilitaire,	NT(+5), M(+500)	pour imposer les intérêts turcs sur l'île de Chypre.	NT(+5)	2			
+			Des Chypriotes turcs	M(+500)			, organisation d'auto-défense armée,	N(+10), M(+500)	pour défendre les intérêts des Chypriotes turcs dans un contexte de montée des violences inter-communautaires.	NT(+3), N(+5)				
+c3	{0}, {1} {2} {3}.	21 décembre 1963	Après un contrôle de police qui dégénère	N(+5), M(+500)	des Chypriotes grecs	NG(+10), M(+250)	ont ouvert le feu et blessé mortellement	M(+150)	un groupe de jeunes Chypriotes turcs	N(+10)				
+			Après des provocations	N(+10), M(+250)	des Grecs	NG(+5), NT(+3), M(+250)	ont tué	NT(-10), N(+5)	d'innocents Chypriotes turcs	NT(+2)				
+			Après un contrôle de police	N(+5), M(+250)	des policiers Chypriotes grecs	NT(+3), M(+500)	ont assassiné froidement	N(+5), M(+500)	un groupe de jeunes délinquants	NG(+15), M(+500)	3			
+					des officiers de la police de Chypre	M(+500)			les passagers de la voiture	N(+2), M(+500)				
+c4	{0}, {1} {2} {3}.	20 juillet 1974	Les soldats turcs	N(+5), M(+500)	envahissent illégalement	N(+10), M(+250)	l'île de Chypre	N(+5), M(+500)	dans le but d'annexer toute l'île de Chypre	NG(+10), M(+250)				
+			L'armée turque et les paramilitaires Chypriotes turcs	N(+5), NT(+5), M(+500)	débarquent sur	N(+5)	toute la partie nord de l'île	NT(+5), M(+500)	dans le but d'établir une zone protégée militairement pour les Chypriotes turcs.	NT(+10), M(+250)				
+			Les impérialistes turcs d'Ankara soutenus par les traîtres Chypriotes turcs	N(+5), NG(+5), M(+500)	utilisent les prérogatives légales du Traité de Garanties pour mener une opération militaire sur	M(+500)	le territoire souverain de la République de Chypre	NT(+10), NG(-5)	dans le but de faire disparaître toute population grecque de l'île.	NG(-5), NT(+5)	4			
+					lancent une "opération spéciale" sur	N(+10), M(+500)	la région de Kyrenia puis en direction des quartiers turcs de Nicosie-nord	N(+5), M(+500)	dans le but de rétablir l'ordre constitutionnel, protéger les Chypriotes turcs et établir une présence militaire durable.	NT(+5), M(+500)				
+c5	{0}, {1} {2} {3}.	août 1974	L'armée turque et les paramilitaires Chypriotes turcs	NG(+5), M(+1000)	font un nettoyage ethnique violent (meurtres, viols, déplacements forcés)	N(+5), M(+1000)	contre les Chypriotes grecs	NG(+15)	en représailles à l'invasion turque.	NG(+15)				
+			Les Turcs	NG(+10), N(+5), M(+250)	massacrent et violent	N(+5), M(+250)	contre les Chypriotes turcs	NT(+20)	pour purifier ethniquement l'île de Chypre.	N(+10)				
+			Les Grecs	NT(+20), N(+5), M(+250)	poussent à la fuite	N(+5), M(+1000)	contre les différentes communautés chypriotes	N(-5)	pour imposer une situation ethnique homogène et irrémédiable.	N(+20), M(+300)	5			
+			Les milices et armées nationalistes de chaque côté	N(+5), M(+500)					dans un élan de violence incontrolable et malheureux.	N(+5), M(+500)				
+c6	{0}, {1} {2} {3}.	15 novembre 1983	Les Chypriotes turcs	M(+500)	proclament la création de	NT(+5), M(+750)	la République Turque de Chypre du Nord	NT(+5), M(+500)	pour imposer la conquête turque du nord de l'île.	NT(+10), N(+5)				
+			Rauf Denktaş, héros du nationalisme turc, et les Chypriotes turcs	NT(+10), M(+250)	décident d'imposer la pseudo existence de	NG(+5), M(+500)	la zone d'occupation turque	N(+5), M(+250)	pour acter la séparation voulue par les nationalistes Chypriotes turcs.	NT(+5), N(+5), M(+500)				
+			Le traitre Rauf Denktaş et ses miliciens	NG(+15), N(+5), M(+500)	déclarent illégalement la création de	NG(+15), N(+5)	la nouvelle entité politique à Chypre nord	N(+5), M(+250)	pour s'organiser dans des institutions souveraines et légitimes.	N(+5), M(+750)	6			
+			Les nationalistes turcs	NT(+5), M(+250)	se mettent en dehors du droit international par la création de	NG(+5), N(+2)			pour enfin être maîtres de leur destin sans influence ou contrôle des Grecs.	N(+5), NT(+5)				

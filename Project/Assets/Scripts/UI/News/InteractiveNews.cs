@@ -56,7 +56,8 @@ public class InteractiveNews : MonoBehaviour
         {
             timeElasped += Time.deltaTime;
             fadeRatio = 1f - timeElasped / duration;
-            this.canvasGroup.alpha = fadeRatio;
+            if(this.canvasGroup != null)
+                this.canvasGroup.alpha = fadeRatio;
             yield return null;
         }
 

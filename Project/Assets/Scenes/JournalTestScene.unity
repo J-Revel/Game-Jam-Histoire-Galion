@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -934,6 +934,10 @@ PrefabInstance:
       propertyPath: blackBackground
       value: 
       objectReference: {fileID: 1973484510}
+    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
+      propertyPath: interactiveNewsPrefab
+      value: 
+      objectReference: {fileID: 1594738354, guid: 7e96fb7f4c613274eba8a521765c666c, type: 3}
     - target: {fileID: 1052537633972410133, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

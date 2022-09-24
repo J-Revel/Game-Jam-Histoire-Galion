@@ -146,7 +146,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4208502303462722787}
   - component: {fileID: 1594738354}
-  - component: {fileID: 1594738355}
   m_Layer: 5
   m_Name: Choice Screen
   m_TagString: Untagged
@@ -192,51 +191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 0}
   gaugeEffects: []
---- !u!114 &1594738355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4208502303462722786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820ab066487ed76499c326dd55061f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceEvent:
-    id: 
-    date: 
-    text: 
-    sections:
-    - options:
-      - text: test
-        effects: []
-      - text: qsdqsdaze
-        effects: []
-      - text: qsdqsdwxc
-        effects: []
-    - options:
-      - text: wwxcwxc
-        effects: []
-      - text: xxxxs
-        effects: []
-      - text: zzzz
-        effects: []
-    - options:
-      - text: rrr
-        effects: []
-      - text: aaa
-        effects: []
-      - text: yyyy
-        effects: []
-    - options:
-      - text: tityui
-        effects: []
-      - text: tyuiyui
-        effects: []
-      - text: ttttt
-        effects: []
 --- !u!1 &4208502303536380179
 GameObject:
   m_ObjectHideFlags: 0

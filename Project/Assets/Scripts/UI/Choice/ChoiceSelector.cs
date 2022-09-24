@@ -10,7 +10,7 @@ public class ChoiceSelector : MonoBehaviour
     private ChoiceEventDataHolder dataHolder;
     public Button confirmButton;
 
-    private void Awake()
+    private void Start()
     {
         interactiveNews = GetComponentInParent<InteractiveNews>();
         dataHolder = GetComponentInParent<ChoiceEventDataHolder>();
@@ -27,9 +27,13 @@ public class ChoiceSelector : MonoBehaviour
         confirmButton.onClick.AddListener(() => {
             for(int i=0; i<selectedAnswers.Length; i++)
             {
-                foreach(GaugeEffect effect in dataHolder.choiceEvent.sections[i].options[selectedAnswers[i].optionIndex].effects)
+                GaugeEffect[] effects = dataHolder.choiceEvent.sections[i].options[selectedAnswers[i].optionIndex].effects;
+                if(effects != null)
                 {
-                    interactiveNews.gaugeEffects.Add(effect);
+                    foreach(GaugeEffect effect in effects)
+                    {
+                        interactiveNews.gaugeEffects.Add(effect);
+                    }
                 }
                 interactiveNews.Hide();
             }
