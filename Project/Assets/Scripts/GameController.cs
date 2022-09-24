@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour, LogicDelegate
     // State
     public GameState state;
 
+    // Scenario Data
+    private const char END_EVENT_CHAR_ID = 'e';
     [SerializeField]
     public ScenarioData scenarioData;
 
@@ -48,6 +50,8 @@ public class GameController : MonoBehaviour, LogicDelegate
     //Effect
     [SerializeField]
     private Image blackBackground;
+
+    private bool ended = false;
 
     void Start()
     {
@@ -126,9 +130,21 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     public void DisplayAnimationView(EventData data)
     {
-        this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(animableViewPrefab, this.transform);
-        this.currentAnimableNew.SetData(data);
-        this.currentAnimableNew.Show();
+        // Detect if this event describe a game end
+        if (data.id[0].Equals(END_EVENT_CHAR_ID))
+        {
+            // TODO set a different prefab and a replay button ?? SceneManager.LoadScene(SceneManager.GetActiveScene().name); ??
+            this.ended = true;
+            this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(animableViewPrefab, this.transform);
+            this.currentAnimableNew.SetData(data);
+            this.currentAnimableNew.Show();
+        }
+        else
+        {
+            this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(animableViewPrefab, this.transform);
+            this.currentAnimableNew.SetData(data);
+            this.currentAnimableNew.Show();
+        }
     }
 
     private List<EventData> GetPotentialEvents()
@@ -201,6 +217,11 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     private void OnNextGameStep()
     {
+        if (this.ended)
+        {
+            this.End();
+            return;
+        }
         // Priorization of animable events
         if( this.eventQueue.Count > 0)
         {
@@ -208,7 +229,11 @@ public class GameController : MonoBehaviour, LogicDelegate
             return;
         }
 
-        
+        if(this.state.Progression >= this.scenarioData.choiceEvents.Count)
+        {
+            Debug.LogError("No more event to display, end animation should have been displayed before");
+        }
+
         this.currentInteractiveNews = Instantiate(interactiveNewsPrefab, transform);
         currentInteractiveNews.gameObject.AddComponent<ChoiceEventDataHolder>().choiceEvent = this.scenarioData.choiceEvents[this.state.Progression];
 
