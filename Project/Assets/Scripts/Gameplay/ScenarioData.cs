@@ -215,4 +215,9 @@ public class ScenarioData : MonoBehaviour
         }
         return result;
     }
+
+    public void OnEventPick(EventData eventData)
+    {
+        this.events.Remove(eventData);
+    }
 }

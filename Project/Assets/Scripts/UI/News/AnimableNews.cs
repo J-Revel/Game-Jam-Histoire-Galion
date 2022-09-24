@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class AnimableNews : MonoBehaviour
 {
@@ -13,7 +15,23 @@ public class AnimableNews : MonoBehaviour
     private CanvasGroup canvasGroup;
 
     [SerializeField]
+    private TextMeshProUGUI textComponent;
+
+    [SerializeField]
+    private Button buttonComponent;
+
+    [SerializeField]
     private MapAnimationType animationType;
+
+    private void AddEvent()
+    {
+        this.buttonComponent.onClick.AddListener(this.Hide);
+    }
+
+    private void RemoveEvent()
+    {
+        this.buttonComponent.onClick.RemoveListener(this.Hide);
+    }
 
     public void Show()
     {
@@ -45,10 +63,12 @@ public class AnimableNews : MonoBehaviour
         {
             LogicDelegate.TriggerMapAnimation(this.animationType);
         }
+        this.AddEvent();
     }
 
     public void Hide()
     {
+        this.RemoveEvent();
         LogicDelegate.OnAnimableNewsHideStart();
         StartCoroutine(this.AnimateHide(HideAnimationDuration));
     }
@@ -72,5 +92,10 @@ public class AnimableNews : MonoBehaviour
     {
         LogicDelegate.OnAnimableNewsHideEnded();
         this.gameObject.SetActive(false);
+    }
+
+    public void SetData(EventData data)
+    {
+        this.textComponent.text = data.text;
     }
 }

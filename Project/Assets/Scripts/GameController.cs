@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +5,8 @@ using UnityEngine.UI;
 public interface LogicDelegate
 {
     public void TriggerMapAnimation(MapAnimationType mapAnimationType);
-    public void OnAnimableNewsHideEnded(); 
+
+    public void OnAnimableNewsHideEnded();
     public void OnAnimableNewsShowEnded();
     public void OnAnimableNewsHideStart();
     public void OnAnimableNewsShowStart();
@@ -30,20 +30,19 @@ public class GameController : MonoBehaviour, LogicDelegate
     private MapAnimationDB mapAnimationDB;
 
     [SerializeField]
-    private AnimableNewsDB animableNewsDB;
-
-    [SerializeField]
     private Button nextStepButton;
+    // TODO remove global next button when view is implemented
 
     //AnimableNews
-    private Queue<AnimableNews> animableNewsQueue = new Queue<AnimableNews>();
+    [SerializeField]
+    private AnimableNews animableViewPrefab;
+    private Queue<EventData> eventQueue = new Queue<EventData>();
     private AnimableNews currentAnimableNew;
 
     //Interactive News
     [SerializeField]
     private List<InteractiveNews> interactiveNews;
     private InteractiveNews currentInteractiveNews;
-    private int interactiveNewsIndex = 0;
 
     //Effect
     [SerializeField]
@@ -56,7 +55,6 @@ public class GameController : MonoBehaviour, LogicDelegate
         this.state = new GameState();
 
         this.mapAnimationDB.Init();
-        this.animableNewsDB.Init();
         this.OnNextGameStep();
     }
 
@@ -72,14 +70,11 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnAnimableNewsShowEnded()
     {
         Debug.Log("GAME STEP : OnAnimableNewsShowEnded");
-        nextStepButton.onClick.AddListener(this.currentAnimableNew.Hide);
-        //TODO enable button and gestures
     }
 
     public void OnAnimableNewsHideStart()
     {
         Debug.Log("GAME STEP : OnAnimableNewsHideStart");
-        nextStepButton.onClick.RemoveListener(this.currentAnimableNew.Hide);
     }
 
     // Compute consequence of interactive news and trigger next step
@@ -99,32 +94,40 @@ public class GameController : MonoBehaviour, LogicDelegate
     {
         Debug.Log("GAME STEP : OnInteractiveNewsShowEnded");
         nextStepButton.onClick.AddListener(this.currentInteractiveNews.Hide);
-        //TODO enable button and gestures
+        // TODO remove global next button when view is implemented
     }
 
     public void OnInteractiveNewsHideStart()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsHideStart");
         nextStepButton.onClick.RemoveListener(this.currentInteractiveNews.Hide);
-        //TODO disable button and gestures
+        // TODO remove global next button when view is implemented
     }
 
     // Compute consequence of interactive news and trigger next step
     public void OnInteractiveNewsHideEnded()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsHideEnded");
-        this.interactiveNewsIndex++;
+        this.state.InteractableViewDone();
 
         this.state.ApplyEffects(this.currentInteractiveNews.GetGaugeEffects());
-        List<EventData> potentialEvents = this.GetPotentialEvents();
+        List<EventData> potentialEventDataList = this.GetPotentialEvents();
 
-        // TODO ENQUEUE EVENT WITH CONDITIONS
-        this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event0));
-        this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event1));
-        this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event2));
+        foreach (EventData eventData in potentialEventDataList)
+        {
+            scenarioData.OnEventPick(eventData);
+            this.eventQueue.Enqueue(eventData);
+        }
 
         this.currentInteractiveNews = null;
         this.OnNextGameStep();
+    }
+
+    public void DisplayAnimationView(EventData data)
+    {
+        this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(animableViewPrefab, this.transform);
+        this.currentAnimableNew.SetData(data);
+        this.currentAnimableNew.Show();
     }
 
     private List<EventData> GetPotentialEvents()
@@ -188,27 +191,27 @@ public class GameController : MonoBehaviour, LogicDelegate
     private void OnNextGameStep()
     {
         // Priorization of animable events
-        if( this.animableNewsQueue.Count > 0)
+        if( this.eventQueue.Count > 0)
         {
-            this.currentAnimableNew = this.animableNewsQueue.Dequeue();
-            this.currentAnimableNew.Show();
+            this.DisplayAnimationView(eventQueue.Dequeue());
             return;
         }
 
         // Show next interactive views or show end
-        if (this.interactiveNewsIndex == this.interactiveNews.Count)
+        if (this.state.Progression == this.interactiveNews.Count)
         {
             this.End();
         }
         else
         {
-            this.currentInteractiveNews = this.interactiveNews[this.interactiveNewsIndex];
+            this.currentInteractiveNews = this.interactiveNews[this.state.Progression];
             this.currentInteractiveNews.Show();
         }
     }
 
     private void End()
     {
-        Debug.Log("TODO Trigger End");
+        //TODO on end what happen ?
+        Debug.Log("End Triggered");
     }
 }

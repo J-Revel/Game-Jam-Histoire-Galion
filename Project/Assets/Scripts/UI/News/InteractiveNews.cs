@@ -39,7 +39,7 @@ public class InteractiveNews : MonoBehaviour
     private void OnShowAnimationEnd()
     {
         LogicDelegate.OnInteractiveNewsShowEnded();
-        //TODO active interactive elements
+        //TODO active interactive elements (all clickable area)
     }
 
     public void Hide()

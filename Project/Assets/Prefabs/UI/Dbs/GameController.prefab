@@ -52,9 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd68908d9cfb54c0aba8861dec8cafae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenarioData: {fileID: 0}
   mapAnimationDB: {fileID: 0}
-  animableNewsDB: {fileID: 0}
   nextStepButton: {fileID: 0}
+  animableViewPrefab: {fileID: 7598929204216431054, guid: 2f2eded934cdf47808195475faec22f9, type: 3}
   interactiveNews:
   - {fileID: 2850217819034499341}
   - {fileID: 3359885342591044365}
@@ -154,6 +155,10 @@ PrefabInstance:
     - target: {fileID: 8098720626587103016, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
       propertyPath: m_Name
       value: InteractiveNews
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098720626587103016, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
@@ -272,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractiveNews1
       objectReference: {fileID: 0}
+    - target: {fileID: 8098720626587103016, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
 --- !u!114 &3359885342591044365 stripped
@@ -388,6 +397,10 @@ PrefabInstance:
     - target: {fileID: 8098720626587103016, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
       propertyPath: m_Name
       value: InteractiveNews2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098720626587103016, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb0e259321cf4bbbaf0e60e617c6e46, type: 3}

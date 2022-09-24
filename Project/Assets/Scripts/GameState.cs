@@ -11,6 +11,7 @@ public class GameState
     public const string MONEY_ID = "M";
     public static int PUBLISHING_COST = 2000;
 
+    public int Progression = 0;
     public int Identity = 0;
     public int TurcNationalism = 0;
     public int GrecNationalism = 0;
@@ -22,8 +23,19 @@ public class GameState
 
     }
 
+    public void InteractableViewDone()
+    {
+        this.Progression++;
+    }
+
     public void ApplyEffects(List<GaugeEffect> effects)
     {
+        if(effects == null)
+        {
+            Debug.LogWarning("Effect list should not be null to apply effect in state");
+            return;
+        }
+
         foreach(GaugeEffect effect in effects)
         {
             this.ApplyEffect(effect);
