@@ -5,15 +5,30 @@ using UnityEngine.UI;
 
 public interface LogicDelegate
 {
-    public void OnAnimableNewsEnded();
-    public void OnInteractiveNewsEnded();
+    public void TriggerMapAnimation(MapAnimationType mapAnimationType);
+
+    public void OnAnimableNewsHideEnded();
+    public void OnAnimableNewsShowEnded();
+    public void OnAnimableNewsHideStart();
+    public void OnAnimableNewsShowStart();
+
+    public void OnInteractiveNewsHideEnded();
+    public void OnInteractiveNewsShowEnded();
+    public void OnInteractiveNewsHideStart();
+    public void OnInteractiveNewsShowStart();
 }
 
 public class GameController : MonoBehaviour, LogicDelegate
 {
     //Map
     [SerializeField]
-    private List<AnimatedOnActivationGameObject> mapAnimations;
+    private MapAnimationDB mapAnimationDB;
+
+    [SerializeField]
+    private AnimableNewsDB animableNewsDB;
+
+    [SerializeField]
+    private Button nextStepButton;
 
     //AnimableNews
     private Queue<AnimableNews> animableNewsQueue = new Queue<AnimableNews>();
@@ -31,7 +46,11 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     void Start()
     {
-        
+        InteractiveNews.LogicDelegate = this;
+        AnimableNews.LogicDelegate = this;
+        mapAnimationDB.Init();
+        animableNewsDB.Init();
+        this.OnNextGameStep();
     }
 
     void Update()
@@ -39,25 +58,71 @@ public class GameController : MonoBehaviour, LogicDelegate
         
     }
 
-    public void OnAnimableNewsEnded()
+    public void OnAnimableNewsShowStart()
+    {
+        Debug.Log("GAME STEP : OnInteractiveNewsShowStart");
+    }
+
+    public void OnAnimableNewsShowEnded()
+    {
+        Debug.Log("GAME STEP : OnInteractiveNewsShowEnded");
+        nextStepButton.onClick.AddListener(this.currentInteractiveNews.Hide);
+        //TODO enable button and gestures
+    }
+
+    public void OnAnimableNewsHideStart()
+    {
+        Debug.Log("GAME STEP : OnInteractiveNewsHideStart");
+        nextStepButton.onClick.RemoveListener(this.currentAnimableNew.Hide);
+    }
+
+    // Compute consequence of interactive news and trigger next step
+    public void OnAnimableNewsHideEnded()
     {
         this.currentAnimableNew = null;
         this.OnNextGameStep();
     }
 
-    public void OnInteractiveNewsEnded()
+    public void OnInteractiveNewsShowStart()
     {
-        this.currentAnimableNew = null;
+        Debug.Log("GAME STEP : OnInteractiveNewsShowStart");
+    }
 
+    public void OnInteractiveNewsShowEnded()
+    {
+        Debug.Log("GAME STEP : OnInteractiveNewsShowEnded");
+        nextStepButton.onClick.AddListener(this.currentInteractiveNews.Hide);
+        //TODO enable button and gestures
+    }
+
+    public void OnInteractiveNewsHideStart()
+    {
+        Debug.Log("GAME STEP : OnInteractiveNewsHideStart");
+        nextStepButton.onClick.RemoveListener(this.currentInteractiveNews.Hide);
+        //TODO disable button and gestures
+    }
+
+    // Compute consequence of interactive news and trigger next step
+    public void OnInteractiveNewsHideEnded()
+    {
+        Debug.Log("GAME STEP : OnInteractiveNewsHideEnded");
+        this.currentAnimableNew = null;
         this.interactiveNewsIndex++;
 
+        // TODO COMPUTE CONSEQUENCE EVENT
         this.currentInteractiveNews.ComputeEffect();
-        // TODO ENQUEUE CONSEQUENCE EVENT
-        // TODO DEQUEUE EVENT
+
+        // TODO ENQUEUE EVENT WITH CONDITIONS
+        this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event0));
+        this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event1));
+        this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event2));
 
         this.OnNextGameStep();
+    }
 
-        // TODO LATER
+    public void TriggerMapAnimation(MapAnimationType type)
+    {
+        mapAnimationDB.Get(type).SetActive(true);
     }
 
     private void OnNextGameStep()
@@ -65,8 +130,7 @@ public class GameController : MonoBehaviour, LogicDelegate
         if( this.animableNewsQueue.Count > 0)
         {
             this.currentAnimableNew = this.animableNewsQueue.Dequeue();
-            this.currentAnimableNew.Init(this);
-            this.currentAnimableNew.Start();
+            this.currentAnimableNew.Show();
         }
 
         if (this.interactiveNewsIndex > this.interactiveNews.Count)
@@ -76,8 +140,7 @@ public class GameController : MonoBehaviour, LogicDelegate
         else
         {
             this.currentInteractiveNews = this.interactiveNews[this.interactiveNewsIndex];
-            this.currentInteractiveNews.Init(this);
-            this.currentInteractiveNews.Start();
+            this.currentInteractiveNews.Show();
         }
     }
 
@@ -85,72 +148,4 @@ public class GameController : MonoBehaviour, LogicDelegate
     {
         Debug.Log("TODO Trigger End");
     }
-}
-
-public class MapAnimation
-{
-    public virtual void Start()
-    {
-        Debug.Log("TODO Trigger Animation");
-    }
-}
-
-public interface InteractiveNews
-{
-    /// <summary>
-    /// Suscribe to get a callback when user confirm editation end
-    /// </summary>
-    /// <param name="dg"> The controller responsible for answering end calls</param>
-    public void Init(LogicDelegate dg);
-
-    /// <summary>
-    /// Start with animations
-    /// </summary>
-    public void Start();
-
-    /// <summary>
-    /// Stop Displaying with animations
-    /// </summary>
-    public void Hide();
-
-    /// <summary>
-    /// Compute the effect on the world variables.
-    /// </summary>
-    public void ComputeEffect(); // TODO get structure influencing the world gauges
-}
-
-
-public interface AnimableNews
-{
-    /// <summary>
-    /// Suscribe to get a callback when user confirm editation end
-    /// </summary>
-    /// <param name="dg"> The controller responsible for answering end calls</param>
-    public void Init(LogicDelegate dg);
-
-    /// <summary>
-    /// Check if an animation is supposed to play
-    /// </summary>
-    /// <param name="animation"> Animation type to play on map</param>
-    /// <returns></returns>
-    public bool TryGetMapAnimation(out MapAnimationType animation);
-
-    /// <summary>
-    /// Check if an animation is supposed to play
-    /// </summary>
-    /// <param name="animation"> Animation type to play on map</param>
-    /// <returns></returns>
-    public void Start();
-}
-
-public enum MapAnimationType
-{
-    PinPosition,
-    Explosion,
-}
-
-public class AnimatedOnActivationGameObject
-{
-    public MapAnimationType type;
-    public GameObject animation;
 }
