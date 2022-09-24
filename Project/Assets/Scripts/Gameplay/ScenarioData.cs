@@ -2,12 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class GaugeEffect
+{
+    string gauge;
+    int effect;
+}
+
+[System.Serializable]
+public class ChoiceEffectData
+{
+    public string text;
+    public GaugeEffect[] effects;
+}
+
+[System.Serializable]
+public class ChoiceSectionData
+{
+    public List<ChoiceEffectData> options = new List<ChoiceEffectData>();
+}
+
 [System.Serializable]
 public class ChoiceEventData
 {
     public string id;
     public string text;
-    public List<string>[] choices;
+    public ChoiceSectionData[] sections;
 }
 
 public class ScenarioData : MonoBehaviour
@@ -24,26 +45,29 @@ public class ScenarioData : MonoBehaviour
             {
                 if(currentEvent != null)
                 {
-                    string[] selectedValues = new string[currentEvent.choices.Length];
-                    for(int i=0; i<currentEvent.choices.Length; i++) {
-                        if(currentEvent.choices[i].Count > 0)
-                            selectedValues[i] = currentEvent.choices[i][Random.Range(0, currentEvent.choices[i].Count)];
+                    ChoiceEffectData[] selectedValues = new ChoiceEffectData[currentEvent.sections.Length];
+                    for(int i=0; i<currentEvent.sections.Length; i++) {
+                        if(currentEvent.sections[i].options.Count > 0)
+                            selectedValues[i] = currentEvent.sections[i].options[Random.Range(0, currentEvent.sections[i].options.Count)];
                     }
-                    Debug.Log(string.Format(currentEvent.text, selectedValues));
                 }
                 currentEvent = new ChoiceEventData();
                 currentEvent.id = sheet.data[new Vector2Int(line, 0)];
                 
-                currentEvent.choices = new List<string>[sheet.size.y-2];
-                for(int i=0; i<currentEvent.choices.Length; i++)
-                    currentEvent.choices[i] = new List<string>();
+                currentEvent.sections = new ChoiceSectionData[sheet.size.y-2];
+                for(int i=0; i<currentEvent.sections.Length; i++)
+                    currentEvent.sections[i] = new ChoiceSectionData();
                 choiceEvents.Add(currentEvent);
                 currentEvent.text = sheet.data[new Vector2Int(line, 1)];
             }
             for(int choiceIndex=0; choiceIndex < sheet.size.y - 2; choiceIndex++)
             {
                 if(sheet.data[new Vector2Int(line, choiceIndex + 2)].Length > 0)
-                    currentEvent.choices[choiceIndex].Add(sheet.data[new Vector2Int(line, choiceIndex + 2)]);
+                {
+                    ChoiceEffectData effectData = new ChoiceEffectData();
+                    effectData.text = sheet.data[new Vector2Int(line, choiceIndex + 2)];
+                    currentEvent.sections[choiceIndex].options.Add(effectData);
+                }
             }
             
         }
