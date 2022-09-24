@@ -7,13 +7,14 @@ public class AnimableNewsDB : MonoBehaviour
     [SerializeField]
     private List<AnimableNewsData> animatedNewsData;
 
-    private Dictionary<NewsType, AnimableNews> typeToObjectDico;
+    private Dictionary<NewsType, AnimableNews> typeToObjectDico = new Dictionary<NewsType, AnimableNews>();
 
     public void Init()
     {
         foreach (AnimableNewsData data in animatedNewsData)
         {
             typeToObjectDico.Add(data.type, data.news);
+            data.news.gameObject.SetActive(false);
         }
     }
 
@@ -44,4 +45,5 @@ public enum NewsType
     Event0,
     Event1,
     Event2,
+    Event3,
 }

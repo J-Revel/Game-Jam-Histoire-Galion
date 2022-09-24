@@ -63,8 +63,8 @@ public class InteractiveNews : MonoBehaviour
 
     private void OnHideAnimationEnd()
     {
-        this.gameObject.SetActive(false);
         LogicDelegate.OnInteractiveNewsHideEnded();
+        this.gameObject.SetActive(false);
     }
 
     /// <summary>

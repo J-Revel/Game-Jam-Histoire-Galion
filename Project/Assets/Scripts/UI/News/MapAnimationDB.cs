@@ -7,13 +7,14 @@ public class MapAnimationDB : MonoBehaviour
     [SerializeField]
     private List<MapAnimationData> animatedMapGameObjects;
 
-    private Dictionary<MapAnimationType, GameObject> typeToObjectDico;
+    private Dictionary<MapAnimationType, GameObject> typeToObjectDico = new Dictionary<MapAnimationType, GameObject>();
 
     public void Init()
     {
         foreach(MapAnimationData data in animatedMapGameObjects)
         {
             typeToObjectDico.Add(data.type, data.objectAnimated);
+            data.objectAnimated.SetActive(false);
         }
     }
 

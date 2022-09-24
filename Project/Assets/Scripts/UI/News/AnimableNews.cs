@@ -17,6 +17,7 @@ public class AnimableNews : MonoBehaviour
 
     public void Show()
     {
+        this.gameObject.SetActive(true);
         LogicDelegate.OnAnimableNewsShowStart();
         StartCoroutine(this.AnimateShow(ShowAnimationDuration));
     }
@@ -69,7 +70,7 @@ public class AnimableNews : MonoBehaviour
 
     private void OnHideAnimationEnd()
     {
-        this.gameObject.SetActive(false);
         LogicDelegate.OnAnimableNewsHideEnded();
+        this.gameObject.SetActive(false);
     }
 }

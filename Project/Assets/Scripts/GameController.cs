@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour, LogicDelegate
     {
         InteractiveNews.LogicDelegate = this;
         AnimableNews.LogicDelegate = this;
-        mapAnimationDB.Init();
-        animableNewsDB.Init();
+        this.mapAnimationDB.Init();
+        this.animableNewsDB.Init();
         this.OnNextGameStep();
     }
 
@@ -60,25 +60,26 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     public void OnAnimableNewsShowStart()
     {
-        Debug.Log("GAME STEP : OnInteractiveNewsShowStart");
+        Debug.Log("GAME STEP : OnAnimableNewsShowStart");
     }
 
     public void OnAnimableNewsShowEnded()
     {
-        Debug.Log("GAME STEP : OnInteractiveNewsShowEnded");
-        nextStepButton.onClick.AddListener(this.currentInteractiveNews.Hide);
+        Debug.Log("GAME STEP : OnAnimableNewsShowEnded");
+        nextStepButton.onClick.AddListener(this.currentAnimableNew.Hide);
         //TODO enable button and gestures
     }
 
     public void OnAnimableNewsHideStart()
     {
-        Debug.Log("GAME STEP : OnInteractiveNewsHideStart");
+        Debug.Log("GAME STEP : OnAnimableNewsHideStart");
         nextStepButton.onClick.RemoveListener(this.currentAnimableNew.Hide);
     }
 
     // Compute consequence of interactive news and trigger next step
     public void OnAnimableNewsHideEnded()
     {
+        Debug.Log("GAME STEP : OnAnimableNewsHideEnded");
         this.currentAnimableNew = null;
         this.OnNextGameStep();
     }
@@ -106,7 +107,6 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnInteractiveNewsHideEnded()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsHideEnded");
-        this.currentAnimableNew = null;
         this.interactiveNewsIndex++;
 
         // TODO COMPUTE CONSEQUENCE EVENT
@@ -117,6 +117,7 @@ public class GameController : MonoBehaviour, LogicDelegate
         this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event1));
         this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event2));
 
+        this.currentInteractiveNews = null;
         this.OnNextGameStep();
     }
 
@@ -127,13 +128,16 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     private void OnNextGameStep()
     {
+        // Priorization of animable events
         if( this.animableNewsQueue.Count > 0)
         {
             this.currentAnimableNew = this.animableNewsQueue.Dequeue();
             this.currentAnimableNew.Show();
+            return;
         }
 
-        if (this.interactiveNewsIndex > this.interactiveNews.Count)
+        // Show next interactive views or show end
+        if (this.interactiveNewsIndex == this.interactiveNews.Count)
         {
             this.End();
         }
