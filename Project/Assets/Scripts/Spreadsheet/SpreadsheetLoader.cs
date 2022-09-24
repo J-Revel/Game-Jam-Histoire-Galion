@@ -14,7 +14,7 @@ public class SpreadsheetLoader : MonoBehaviour
     {
         SpreadsheetData result = new SpreadsheetData();
         string dataStr = textAsset.text;
-        string[] lines = dataStr.Split("\r\n");
+        string[] lines = dataStr.Split(System.Environment.NewLine);
         result.size.x = lines.Length;
         for(int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
         {
