@@ -20,6 +20,7 @@ public interface LogicDelegate
 
 public class GameController : MonoBehaviour, LogicDelegate
 {
+    public GameState state;
     //Map
     [SerializeField]
     private MapAnimationDB mapAnimationDB;
@@ -48,6 +49,8 @@ public class GameController : MonoBehaviour, LogicDelegate
     {
         InteractiveNews.LogicDelegate = this;
         AnimableNews.LogicDelegate = this;
+        state = new GameState();
+
         this.mapAnimationDB.Init();
         this.animableNewsDB.Init();
         this.OnNextGameStep();
