@@ -168,7 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spreadsheetAsset: {fileID: 4900000, guid: 74431b533277bd84ab3b30dcddaf9329, type: 3}
+  eventSpreadsheetAssets:
+  - {fileID: 4900000, guid: 01933d218a4b061409df4f2fdfccbf5c, type: 3}
   choiceEvents: []
+  maxChoiceCount: 4
 --- !u!1 &323040516
 GameObject:
   m_ObjectHideFlags: 0

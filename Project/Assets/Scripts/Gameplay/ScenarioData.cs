@@ -33,14 +33,59 @@ public class ChoiceEventData
     public ChoiceSectionData[] sections;
 }
 
+public enum GaugeComparison
+{
+    Equals,
+    LowerOrEqual,
+    Lower,
+    HigherOrEqual,
+    Higher,
+    Different,
+}
+
+[System.Serializable]
+public class EventCondition
+{
+    public string leftGauge;
+    public string rightGauge;
+    public GaugeComparison comparison;
+}
+
+[System.Serializable]
+public class EventData 
+{
+    public string id;
+    public string date;
+    public EventCondition[] conditions;
+    public string title;
+    public string text; 
+}
+
 public class ScenarioData : MonoBehaviour
 {
     public TextAsset spreadsheetAsset;
+    public TextAsset[] eventSpreadsheetAssets;
     public List<ChoiceEventData> choiceEvents = new List<ChoiceEventData>();
+    public List<EventData> events = new List<EventData>();
     public int maxChoiceCount = 4;
+
     public void Start()
     {
         SpreadsheetData sheet = SpreadsheetLoader.Load(spreadsheetAsset);
+        choiceEvents = ParseChoiceEvents(sheet);
+
+        foreach(TextAsset eventSpreadsheetAsset in eventSpreadsheetAssets)
+        {
+            SpreadsheetData eventSheet = SpreadsheetLoader.Load(eventSpreadsheetAsset);
+            foreach(EventData evt in ParseScenarioEvents(eventSheet)) {
+                events.Add(evt);
+            }
+        }
+    }
+
+    private List<ChoiceEventData> ParseChoiceEvents(SpreadsheetData sheet)
+    {
+        List<ChoiceEventData> result = new List<ChoiceEventData>();
         ChoiceEventData currentEvent = null;
         for(int line=0; line < sheet.size.x; line++)
         {
@@ -83,18 +128,17 @@ public class ScenarioData : MonoBehaviour
             }
             
         }
+
+        return result;
     }
 
     private GaugeEffect[] ParseGaugeEffect(string text)
     {
-        Debug.Log("============");
-        Debug.Log(" => ");
         string[] splits = text.Replace(" ", "").Split(',');
         GaugeEffect[] result = new GaugeEffect[splits.Length];
         for(int i=0; i<splits.Length; i++)
         {
             string split = splits[i];
-            Debug.Log("Split : " + split);
             int separatorIndex = split.IndexOf('(');
             string gaugeName = split.Substring(0, separatorIndex);
             string effectText = split.Substring(separatorIndex+1);
@@ -108,6 +152,66 @@ public class ScenarioData : MonoBehaviour
 
             }
             result[i] = effect;
+        }
+        return result;
+    }
+
+    private EventCondition ParseEventCondition(string text)
+    {
+        string operatorChars = "<>=!";
+        int startOperatorIndex = text.Length;
+        int endOperatorIndex = 0;
+        Dictionary<string, GaugeComparison> comparisonStrings = new Dictionary<string,GaugeComparison> {
+            { "=", GaugeComparison.Equals}, 
+            { "!=", GaugeComparison.Different}, 
+            { ">", GaugeComparison.Higher}, 
+            { ">=", GaugeComparison.HigherOrEqual}, 
+            { "<", GaugeComparison.Lower}, 
+            { "<=", GaugeComparison.LowerOrEqual}, 
+        };
+        bool operatorFound = false;
+        for(int i=0; i<text.Length; i++)
+        {
+            if(operatorChars.Contains(text[i]))
+            {
+                operatorFound = true;
+                if(startOperatorIndex > i)
+                    startOperatorIndex = i;
+                if(endOperatorIndex < i)
+                    endOperatorIndex = i;
+            }
+        }
+        if(!operatorFound)
+            return null;
+        string leftVariableName = text.Substring(0, startOperatorIndex);
+        string rightVariableName = text.Substring(endOperatorIndex + 1, text.Length - endOperatorIndex - 1);
+        string operatorText = text.Substring(startOperatorIndex, endOperatorIndex - startOperatorIndex + 1);
+        Debug.Log(leftVariableName + " " + operatorText + " " + rightVariableName);
+        GaugeComparison comparison = comparisonStrings[operatorText];
+        EventCondition result = new EventCondition();
+        result.leftGauge = leftVariableName;
+        result.rightGauge = rightVariableName;
+        result.comparison = comparison;
+        return result; 
+    }
+
+    public List<EventData> ParseScenarioEvents(SpreadsheetData sheet)
+    {
+        List<EventData> result = new List<EventData>();
+        for(int line=0; line < sheet.size.x; line++)
+        {
+            EventData evt = new EventData();
+            evt.id = sheet.data[new Vector2Int(line, 0)];
+            evt.date = sheet.data[new Vector2Int(line, 1)];
+            string[] conditionTexts = sheet.data[new Vector2Int(line, 2)].Replace(" ", "").Split(",");
+            evt.conditions = new EventCondition[conditionTexts.Length];
+            for(int i=0; i<conditionTexts.Length; i++)
+            {
+                evt.conditions[i] = ParseEventCondition(conditionTexts[i]);
+            }
+            evt.title = sheet.data[new Vector2Int(line, 3)];
+            evt.text = sheet.data[new Vector2Int(line, 4)];
+            result.Add(evt);
         }
         return result;
     }
