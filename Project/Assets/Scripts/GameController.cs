@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -138,8 +139,16 @@ public class GameController : MonoBehaviour, LogicDelegate
             bool eventConditionFound = false;
             foreach (var condition in animableEvent.conditions)
             {
-                if(condition == null)
+                if (condition == null)
+                {
+                    Debug.LogWarning("No condition in date");
                     continue;
+                }
+                if (String.IsNullOrEmpty(condition.leftGauge) && String.IsNullOrEmpty(condition.rightGauge))
+                {
+                    Debug.LogWarning("No gauge in date");
+                    continue;
+                }
                 int rightGaugeValue = this.state.GetGaugeValue(condition.leftGauge);
                 if (!int.TryParse(condition.rightGauge, out int leftGaugevalue))
                 {
