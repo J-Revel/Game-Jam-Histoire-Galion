@@ -149,38 +149,38 @@ public class GameController : MonoBehaviour, LogicDelegate
                     Debug.LogWarning("No gauge in date");
                     continue;
                 }
-                int rightGaugeValue = this.state.GetGaugeValue(condition.leftGauge);
-                if (!int.TryParse(condition.rightGauge, out int leftGaugevalue))
+                int leftGaugeValue = this.state.GetGaugeValue(condition.leftGauge);
+                if (!int.TryParse(condition.rightGauge, out int rightGaugevalue))
                 {
-                    leftGaugevalue = this.state.GetGaugeValue(condition.rightGauge);
+                    rightGaugevalue = this.state.GetGaugeValue(condition.rightGauge);
                 }
 
                 switch (condition.comparison)
                 {
                     case GaugeComparison.Equals:
-                        eventConditionFound = leftGaugevalue == rightGaugeValue;
+                        eventConditionFound = leftGaugeValue == rightGaugevalue;
                         break;
                     case GaugeComparison.LowerOrEqual:
-                        eventConditionFound = leftGaugevalue <= rightGaugeValue;
+                        eventConditionFound = leftGaugeValue <= rightGaugevalue;
                         break;
                     case GaugeComparison.Lower:
-                        eventConditionFound = leftGaugevalue < rightGaugeValue;
+                        eventConditionFound = leftGaugeValue < rightGaugevalue;
                         break;
                     case GaugeComparison.HigherOrEqual:
-                        eventConditionFound = leftGaugevalue >= rightGaugeValue;
+                        eventConditionFound = leftGaugeValue >= rightGaugevalue;
                         break;
                     case GaugeComparison.Higher:
-                        eventConditionFound = leftGaugevalue > rightGaugeValue;
+                        eventConditionFound = leftGaugeValue > rightGaugevalue;
                         break;
                     case GaugeComparison.Different:
-                        eventConditionFound = leftGaugevalue != rightGaugeValue;
+                        eventConditionFound = leftGaugeValue != rightGaugevalue;
                         break;
                 }
 
                 if (!eventConditionFound)
                 {
                     // If one condition is false, do not had the event
-                    continue;
+                    break;
                 }
             }
 
