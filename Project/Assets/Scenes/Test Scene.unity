@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f661185abf92c458d5864d79259b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spreadsheetAsset: {fileID: 4900000, guid: 3331d1349a2cbe945af7541a3ca4293b, type: 3}
+  spreadsheetAsset: {fileID: 4900000, guid: 74431b533277bd84ab3b30dcddaf9329, type: 3}
   choiceEvents: []
 --- !u!1 &323040516
 GameObject:
