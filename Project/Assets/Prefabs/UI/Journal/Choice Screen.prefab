@@ -136,6 +136,7 @@ MonoBehaviour:
   - {fileID: 3652978169924958811}
   - {fileID: 3652978170713732816}
   confirmButton: {fileID: 4208502304304977382}
+  newspaperTransform: {fileID: 4208502304946405372}
 --- !u!1 &4208502303462722786
 GameObject:
   m_ObjectHideFlags: 0

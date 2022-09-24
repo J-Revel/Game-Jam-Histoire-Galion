@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 6256054236874201861}
   - component: {fileID: 7626040541518161342}
   - component: {fileID: 636809401001723023}
+  - component: {fileID: 8313634276729088518}
   m_Layer: 5
   m_Name: Paper Sheet Button
   m_TagString: Untagged
@@ -337,3 +338,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectionIndex: 0
   optionIndex: 0
+--- !u!114 &8313634276729088518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487207511423296128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39f45eea5044e84c80d313bf27dc029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceIntensity: 80
+  attractionIntensity: 1
+  friction: 0.5
+  velocity: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0}

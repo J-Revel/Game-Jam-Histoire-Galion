@@ -9,8 +9,9 @@ public class ChoiceSelector : MonoBehaviour
     public ChoiceAnswerDisplay[] selectedAnswers;
     private ChoiceEventDataHolder dataHolder;
     public Button confirmButton;
+    public RectTransform newspaperTransform;
 
-    private void Start()
+    private IEnumerator Start()
     {
         interactiveNews = GetComponentInParent<InteractiveNews>();
         dataHolder = GetComponentInParent<ChoiceEventDataHolder>();
@@ -38,5 +39,20 @@ public class ChoiceSelector : MonoBehaviour
                 interactiveNews.Hide();
             }
         });
+
+        yield return null;
+        float duration = 1;
+        for(float time=0; time < duration; time+= Time.deltaTime)
+        {
+            float t = time / duration;
+            t = 1 - (1-t)*(1-t);
+            newspaperTransform.pivot = new Vector2((1-t) * (1-t), 1-t);
+            yield return null;
+        }
     }
+
+    // public IEnumerator OpenVersionSelector(int section)
+    // {
+
+    // }
 }

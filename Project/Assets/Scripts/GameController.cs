@@ -93,14 +93,14 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnInteractiveNewsShowEnded()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsShowEnded");
-        nextStepButton.onClick.AddListener(this.currentInteractiveNews.Hide);
+        nextStepButton?.onClick.AddListener(this.currentInteractiveNews.Hide);
         // TODO remove global next button when view is implemented
     }
 
     public void OnInteractiveNewsHideStart()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsHideStart");
-        nextStepButton.onClick.RemoveListener(this.currentInteractiveNews.Hide);
+        nextStepButton?.onClick.RemoveListener(this.currentInteractiveNews.Hide);
         // TODO remove global next button when view is implemented
     }
 
