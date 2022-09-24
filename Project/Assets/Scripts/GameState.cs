@@ -9,6 +9,7 @@ public class GameState
     public const string GREC_NATIONALISM_ID = "NG";
     public const string GLOBAL_NATIONALISM_ID = "N";
     public const string MONEY_ID = "M";
+    public const string PROGRESSION_ID = "P";
     public static int PUBLISHING_COST = 2000;
 
     public int Progression = 0;
@@ -56,6 +57,8 @@ public class GameState
                 return this.GlobalNationalism;
             case MONEY_ID:
                 return this.Money;
+            case PROGRESSION_ID:
+                return this.Progression;
             default:
                 Debug.LogError($"Effect with ID '{gaugeID}' does not correspond with any game variables");
                 return 0;
@@ -80,6 +83,9 @@ public class GameState
                 break;
             case MONEY_ID:
                 this.Money += effect.effect;
+                break;
+            case PROGRESSION_ID:
+                this.Progression += effect.effect;
                 break;
             default:
                 Debug.LogError($"Effect with ID '{effect.gauge}' does not correspond with any game variables");
