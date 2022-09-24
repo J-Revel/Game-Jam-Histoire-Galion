@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public interface LogicDelegate
 {
-    public void TriggerMapAnimation(MapAnimationType mapAnimationType);
-
     public void OnAnimableNewsHideEnded();
     public void OnAnimableNewsShowEnded();
     public void OnAnimableNewsHideStart();
