@@ -744,6 +744,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973484508}
   m_CullTransparentMesh: 1
+--- !u!1 &2015701845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015701847}
+  - component: {fileID: 2015701846}
+  m_Layer: 0
+  m_Name: ScenarioDB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2015701846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015701845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f661185abf92c458d5864d79259b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spreadsheetAsset: {fileID: 4900000, guid: 01933d218a4b061409df4f2fdfccbf5c, type: 3}
+  eventSpreadsheetAssets:
+  - {fileID: 4900000, guid: 68766813f8d25453dbf33263b8d30cc9, type: 3}
+  choiceEvents: []
+  events: []
+  maxChoiceCount: 4
+--- !u!4 &2015701847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015701845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 413.49112, y: 286.21378, z: -0.90279466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059261982
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractiveNews : MonoBehaviour
@@ -70,8 +71,8 @@ public class InteractiveNews : MonoBehaviour
     /// <summary>
     /// Compute the effect on the world variables.
     /// </summary>
-    public void ComputeEffect()
+    public List<GaugeEffect> GetGaugeEffects()
     {
-
+        return null;
     } // TODO get structure influencing the world gauges
 }
