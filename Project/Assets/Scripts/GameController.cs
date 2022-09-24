@@ -20,7 +20,12 @@ public interface LogicDelegate
 
 public class GameController : MonoBehaviour, LogicDelegate
 {
+    // State
     public GameState state;
+
+    [SerializeField]
+    public ScenarioData scenarioData;
+
     //Map
     [SerializeField]
     private MapAnimationDB mapAnimationDB;
@@ -49,7 +54,7 @@ public class GameController : MonoBehaviour, LogicDelegate
     {
         InteractiveNews.LogicDelegate = this;
         AnimableNews.LogicDelegate = this;
-        state = new GameState();
+        this.state = new GameState();
 
         this.mapAnimationDB.Init();
         this.animableNewsDB.Init();
@@ -58,7 +63,6 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     void Update()
     {
-        
     }
 
     public void OnAnimableNewsShowStart()
@@ -112,8 +116,8 @@ public class GameController : MonoBehaviour, LogicDelegate
         Debug.Log("GAME STEP : OnInteractiveNewsHideEnded");
         this.interactiveNewsIndex++;
 
-        // TODO COMPUTE CONSEQUENCE EVENT
-        this.currentInteractiveNews.ComputeEffect();
+        this.state.ApplyEffects(this.currentInteractiveNews.GetGaugeEffects());
+        List<EventData> potentialEvents = this.GetPotentialEvents();
 
         // TODO ENQUEUE EVENT WITH CONDITIONS
         this.animableNewsQueue.Enqueue(this.animableNewsDB.Get(NewsType.Event0));
@@ -122,6 +126,59 @@ public class GameController : MonoBehaviour, LogicDelegate
 
         this.currentInteractiveNews = null;
         this.OnNextGameStep();
+    }
+
+    private List<EventData> GetPotentialEvents()
+    {
+        List<EventData> eventDataList = new List<EventData>();
+        foreach(var animableEvent in this.scenarioData.events)
+        {
+            bool eventConditionFound = false;
+            foreach (var condition in animableEvent.conditions)
+            {
+                int rightGaugeValue = this.state.GetGaugeValue(condition.leftGauge);
+                if (!int.TryParse(condition.rightGauge, out int leftGaugevalue))
+                {
+                    leftGaugevalue = this.state.GetGaugeValue(condition.rightGauge);
+                }
+
+                switch (condition.comparison)
+                {
+                    case GaugeComparison.Equals:
+                        eventConditionFound = leftGaugevalue == rightGaugeValue;
+                        break;
+                    case GaugeComparison.LowerOrEqual:
+                        eventConditionFound = leftGaugevalue <= rightGaugeValue;
+                        break;
+                    case GaugeComparison.Lower:
+                        eventConditionFound = leftGaugevalue < rightGaugeValue;
+                        break;
+                    case GaugeComparison.HigherOrEqual:
+                        eventConditionFound = leftGaugevalue >= rightGaugeValue;
+                        break;
+                    case GaugeComparison.Higher:
+                        eventConditionFound = leftGaugevalue > rightGaugeValue;
+                        break;
+                    case GaugeComparison.Different:
+                        eventConditionFound = leftGaugevalue != rightGaugeValue;
+                        break;
+                }
+
+                if (!eventConditionFound)
+                {
+                    // If one condition is false, do not had the event
+                    continue;
+                }
+            }
+
+            if (eventConditionFound)
+            {
+                // If all conditions are true, get the event
+                eventDataList.Add(animableEvent);
+            }
+        }
+
+        return eventDataList;
     }
 
     public void TriggerMapAnimation(MapAnimationType type)

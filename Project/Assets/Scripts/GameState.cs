@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState
@@ -21,48 +22,56 @@ public class GameState
 
     }
 
-    public void ApplyEffects(List<GameEffects> effects)
+    public void ApplyEffects(List<GaugeEffect> effects)
     {
-        foreach(GameEffects effect in effects)
+        foreach(GaugeEffect effect in effects)
         {
             this.ApplyEffect(effect);
         }
     }
 
-    private void ApplyEffect(GameEffects effect)
+    public int GetGaugeValue(string gaugeID)
     {
-        switch (effect.ID)
+        switch (gaugeID)
         {
             case IDENTITY_ID:
-                this.Identity += effect.Variation;
-                break;
+                return this.Identity;
             case TURC_NATIONALISM_ID:
-                this.TurcNationalism += effect.Variation;
-                break;
+                return this.TurcNationalism;
             case GREC_NATIONALISM_ID:
-                this.GrecNationalism += effect.Variation;
-                break;
+                return this.GrecNationalism;
             case GLOBAL_NATIONALISM_ID:
-                this.Identity += effect.Variation;
-                break;
+                return this.GlobalNationalism;
             case MONEY_ID:
-                this.Money += effect.Variation;
-                break;
+                return this.Money;
             default:
-                Debug.LogError($"Effect with ID '{effect.ID}' does not correspond with any game variables");
-                break;
+                Debug.LogError($"Effect with ID '{gaugeID}' does not correspond with any game variables");
+                return 0;
         }
     }
-}
 
-public class GameEffects
-{
-    public string ID;
-    public int Variation;
-
-    public GameEffects(string iD, int variation)
+    private void ApplyEffect(GaugeEffect effect)
     {
-        this.ID = iD;
-        this.Variation = variation;
+        switch (effect.gauge)
+        {
+            case IDENTITY_ID:
+                this.Identity += effect.effect;
+                break;
+            case TURC_NATIONALISM_ID:
+                this.TurcNationalism += effect.effect;
+                break;
+            case GREC_NATIONALISM_ID:
+                this.GrecNationalism += effect.effect;
+                break;
+            case GLOBAL_NATIONALISM_ID:
+                this.GlobalNationalism += effect.effect;
+                break;
+            case MONEY_ID:
+                this.Money += effect.effect;
+                break;
+            default:
+                Debug.LogError($"Effect with ID '{effect.gauge}' does not correspond with any game variables");
+                break;
+        }
     }
 }

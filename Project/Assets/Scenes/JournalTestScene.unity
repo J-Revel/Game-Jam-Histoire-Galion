@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f661185abf92c458d5864d79259b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spreadsheetAsset: {fileID: 0}
+  spreadsheetAsset: {fileID: 4900000, guid: 01933d218a4b061409df4f2fdfccbf5c, type: 3}
   eventSpreadsheetAssets:
   - {fileID: 4900000, guid: 68766813f8d25453dbf33263b8d30cc9, type: 3}
   choiceEvents: []
