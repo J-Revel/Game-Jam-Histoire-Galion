@@ -12,6 +12,7 @@ public class InteractiveNews : MonoBehaviour
 
     [SerializeField]
     private CanvasGroup canvasGroup;
+    public List<GaugeEffect> gaugeEffects = new List<GaugeEffect>();
 
     public void Show()
     {
@@ -73,6 +74,6 @@ public class InteractiveNews : MonoBehaviour
     /// </summary>
     public List<GaugeEffect> GetGaugeEffects()
     {
-        return null;
+        return gaugeEffects;
     } // TODO get structure influencing the world gauges
 }
