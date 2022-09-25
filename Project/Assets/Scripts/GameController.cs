@@ -212,7 +212,9 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     public void TriggerMapAnimation(string eventID)
     {
-        mapAnimationDB.Get(eventID).SetActive(true);
+        GameObject animationElement = mapAnimationDB.Get(eventID);
+        if(animationElement != null)
+            animationElement.SetActive(true);
     }
 
     private void OnNextGameStep()

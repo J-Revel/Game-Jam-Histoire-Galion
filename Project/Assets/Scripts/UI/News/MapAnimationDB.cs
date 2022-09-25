@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class MapAnimationDB : MonoBehaviour
@@ -25,7 +24,8 @@ public class MapAnimationDB : MonoBehaviour
         {
             if (mapData.eventID.Equals(eventID))
             {
-                Debug.Assert(mapData.objectAnimated.activeInHierarchy == false, "This animation has already been triggered !", this);
+                if(mapData.objectAnimated != null)
+                    Debug.Assert(mapData.objectAnimated.activeInHierarchy == false, "This animation has already been triggered !", this);
                 return mapData.objectAnimated;
             }
         }
