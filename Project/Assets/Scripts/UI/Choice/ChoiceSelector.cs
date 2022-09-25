@@ -18,6 +18,7 @@ public class ChoiceSelector : MonoBehaviour
     private List<TranslateTargetMovement> usedTranslateTargetMovements = new List<TranslateTargetMovement>();
     public Transform exitTarget;
     public CanvasGroup selectorBackgroundGroup;
+    public TitleAnimatedWriter titleAnimatedWriter;
 
     private IEnumerator Start()
     {
@@ -64,6 +65,14 @@ public class ChoiceSelector : MonoBehaviour
             newspaperTransform.pivot = new Vector2((1-t) * (1-t), 1-t);
             yield return null;
         }
+        string title = "";
+        for(int i=0; i<selectedAnswers.Length; i++)
+        {
+            if(i > 0)
+                title += " ";
+            title += dataHolder.choiceEvent.sections[selectedAnswers[i].sectionIndex].options[selectedAnswers[i].optionIndex].text;
+        }
+        titleAnimatedWriter.WriteText(title);
     }
 
     public IEnumerator OpenVersionSelector(int section)
@@ -149,6 +158,14 @@ public class ChoiceSelector : MonoBehaviour
             selectorBackgroundGroup.alpha = 1 - t / duration;
             yield return null;
         }
+        string title = "";
+        for(int i=0; i<selectedAnswers.Length; i++)
+        {
+            if(i > 0)
+                title += " ";
+            title += dataHolder.choiceEvent.sections[selectedAnswers[i].sectionIndex].options[selectedAnswers[i].optionIndex].text;
+        }
+        titleAnimatedWriter.WriteText(title);
     }
 
     private IEnumerator CloseMenuAnimation()
