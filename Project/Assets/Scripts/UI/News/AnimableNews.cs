@@ -8,6 +8,7 @@ public class AnimableNews : MonoBehaviour
 {
     public static float ShowAnimationDuration = 1f;
     public static float HideAnimationDuration = 1f;
+    public string id;
 
     public static LogicDelegate LogicDelegate;
 
@@ -94,6 +95,7 @@ public class AnimableNews : MonoBehaviour
 
     public void SetData(EventData data)
     {
+        this.id = data.id;
         this.titleComponent.text = data.title;
         this.textComponent.text = data.text;
     }

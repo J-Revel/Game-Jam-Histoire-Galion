@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour, LogicDelegate
     // State
     public GameState state;
 
+    // For debug
+    public string forcedEventId;
+
     // Scenario Data
     private const char END_EVENT_CHAR_ID = 'e';
     [SerializeField]
@@ -43,7 +46,7 @@ public class GameController : MonoBehaviour, LogicDelegate
     private AnimableNews endingScreenPrefab;
     private Queue<EventData> eventQueue = new Queue<EventData>();
     private AnimableNews currentAnimableNew;
-    private EventData currentAnimableData;
+    public EventData currentAnimableData;
 
     //Interactive News
     [SerializeField]
@@ -157,6 +160,11 @@ public class GameController : MonoBehaviour, LogicDelegate
     private List<EventData> GetPotentialEvents()
     {
         List<EventData> eventDataList = new List<EventData>();
+        foreach(var animableEvent in this.scenarioData.events)
+        {
+            if(animableEvent.id == forcedEventId)
+                eventDataList.Add(animableEvent);
+        }
         foreach(var animableEvent in this.scenarioData.events)
         {
             bool eventConditionFound = false;

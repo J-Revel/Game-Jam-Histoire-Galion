@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 4751545908008860008}
   - component: {fileID: 7598929204216431054}
   - component: {fileID: 7996811192680909193}
+  - component: {fileID: 4614318723161074699}
   m_Layer: 5
   m_Name: AnimableNews
   m_TagString: Untagged
@@ -331,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f346d338c388488d913a79f9861f9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   canvasGroup: {fileID: 7996811192680909193}
   textComponent: {fileID: 1244766044412016230}
   titleComponent: {fileID: 6015358684884947444}
@@ -348,6 +350,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4614318723161074699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751545908008860013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a1cf200fe5c0f41bfed3599a7c2e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - eventId: s0
+    soundEventId: '{a2500dca-9e17-491f-a984-d36828d54008}'
 --- !u!1 &4900200161807968658
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,8 +402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1.05, y: 0.05}
   m_AnchorMax: {x: 1.05, y: 0.05}
-  m_AnchoredPosition: {x: -219, y: 0}
-  m_SizeDelta: {x: 140, y: 30}
+  m_AnchoredPosition: {x: -264.8628, y: 0}
+  m_SizeDelta: {x: 175, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6197036703347721191
 CanvasRenderer:
@@ -418,7 +435,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: d0e0857089ab3df4698152c9b3e4f18e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
