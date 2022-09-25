@@ -8,7 +8,6 @@ public class ChoiceAnswerMovement : MonoBehaviour
     public float attractionIntensity;
     public float friction;
     private Vector2 velocity;
-    public Vector2 targetPosition;
     public Vector2 maxTargetOffset;
     private RectTransform rectTransform;
     public float maxRotation;
@@ -20,12 +19,12 @@ public class ChoiceAnswerMovement : MonoBehaviour
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        targetPosition = rectTransform.anchoredPosition;
-
+        
     }
 
     private void Update()
     {
+        Vector2 targetPosition = Vector2.zero;
         velocity += Random.insideUnitCircle * Time.deltaTime * forceIntensity;
         Vector2 direction = (targetPosition - rectTransform.anchoredPosition);
         if(direction.x > 0)
