@@ -27,6 +27,7 @@ public class GameState
     public void InteractableViewDone()
     {
         this.Progression++;
+        this.Money -= PUBLISHING_COST;
     }
 
     public void ApplyEffects(List<GaugeEffect> effects)
