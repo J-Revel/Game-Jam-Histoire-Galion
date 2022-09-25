@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public interface LogicDelegate
 {
-    public void TriggerMapAnimation(MapAnimationType mapAnimationType);
+    public void TriggerMapAnimation(string eventID);
 
     public void OnAnimableNewsHideEnded();
     public void OnAnimableNewsShowEnded();
@@ -210,9 +210,9 @@ public class GameController : MonoBehaviour, LogicDelegate
         return eventDataList;
     }
 
-    public void TriggerMapAnimation(MapAnimationType type)
+    public void TriggerMapAnimation(string eventID)
     {
-        mapAnimationDB.Get(type).SetActive(true);
+        mapAnimationDB.Get(eventID).SetActive(true);
     }
 
     private void OnNextGameStep()
