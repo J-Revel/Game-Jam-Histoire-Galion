@@ -21,7 +21,7 @@ public class AnimableNews : MonoBehaviour
     private Button buttonComponent;
 
     [SerializeField]
-    private MapAnimationType animationType;
+    private string animationEventID;
 
     private void AddEvent()
     {
@@ -59,9 +59,9 @@ public class AnimableNews : MonoBehaviour
     private void OnShowAnimationEnd()
     {
         LogicDelegate.OnAnimableNewsShowEnded();
-        if (this.animationType != MapAnimationType.None)
+        if (this.animationEventID != null)
         {
-            LogicDelegate.TriggerMapAnimation(this.animationType);
+            LogicDelegate.TriggerMapAnimation(animationEventID);
         }
         this.AddEvent();
     }
