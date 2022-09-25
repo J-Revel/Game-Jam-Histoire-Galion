@@ -15,8 +15,6 @@ public class MusicPlayer : MonoBehaviour
     {
         musicInstance = FMODUnity.RuntimeManager.CreateInstance(musicSound);
         musicInstance.start();
-        currentValue = gameController.state.GlobalNationalism;
-        musicInstance.setParameterByName("NatioFMOD", currentValue);
         StartCoroutine(UpdateValueCoroutine());
     }
 
@@ -27,6 +25,8 @@ public class MusicPlayer : MonoBehaviour
 
     IEnumerator UpdateValueCoroutine()
     {
+        yield return null;
+        currentValue = gameController.state.GlobalNationalism;
         while(true)
         {
             while(gameController.state.GlobalNationalism == currentValue)
