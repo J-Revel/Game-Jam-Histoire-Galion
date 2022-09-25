@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.7730687, b: 0.6166341, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2322,10 +2322,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tu vas \xEAtre amen\xE9\xB7e \xE0 orienter la r\xE9daction d'un journal
-    en changeant sa une.\n\nPour chaque \xE9v\xE9nement qui a marqu\xE9 l'histoire
-    de Chypre, tu pourras qui partage le point de vue de ta communaut\xE9. Choisis
-    avec discernement !\n"
+  m_text: "Tu es journaliste d'un journal <b>propagandiste</b>, et pour chaque \xE9v\xE8nement
+    cl\xE9 de l'histoire de Chypre, tu vas devoir r\xE9diger <b>un titre \xE0 la
+    Une</b>.\r\n\r\nChaque Une se divise en <b>4 morceaux de phrase</b>. Clique sur
+    chacun d'entre-eux pour voir les choix qui te sont propos\xE9s, puis clique sur
+    l'\xE9l\xE9ment de langage que tu comptes utiliser pour ta Une. Une fois tes
+    choix faits, envoie ta Une \xE0 la presse pour la valider.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b407f166496c4264baf0633d5731ce53, type: 2}
   m_sharedMaterial: {fileID: 2195392585456599672, guid: b407f166496c4264baf0633d5731ce53, type: 2}
@@ -2914,7 +2916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.7730687, b: 0.6166341, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2998,12 +3000,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Malgr\xE9 une histoire mill\xE9naire de mixit\xE9 et de lieu d'\xE9change,
-    l'\xEEle de Chypre a \xE9t\xE9 le th\xE9\xE2tre d'une mont\xE9e rapide et extr\xEAme
-    du nationalisme au milieu du XXe si\xE8cle.\r\n\r\nCe jeu te place au c\u0153ur
-    de ce contexte historique, en plein d\xE9veloppement de la pens\xE9e nationaliste.
-    Prends part \xE0 l'histoire qui se construit : d\xE9fends ta version des \xE9v\xE9nements,
-    d\xE9fends ton histoire, d\xE9fends ta communaut\xE9.\r\n\r\nAttention, certaines
-    images d'archive peuvent choquer (mort).\n"
+    l'\xEEle de <b>Chypre</b> a \xE9t\xE9 le th\xE9\xE2tre d'une mont\xE9e rapide
+    et extr\xEAme du <b>nationalisme</b> au milieu du XXe si\xE8cle.\r\n\r\nCe jeu
+    te place au c\u0153ur de ce contexte historique, <b>en plein d\xE9veloppement
+    de la pens\xE9e nationaliste</b>. Prends part \xE0 l'histoire qui se construit
+    : d\xE9fends ta version des \xE9v\xE9nements, d\xE9fends ton <b>histoire</b>,
+    d\xE9fends ta communaut\xE9.\r\n\r\n<i>Attention, certaines images d'archive
+    peuvent choquer (mort).\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b407f166496c4264baf0633d5731ce53, type: 2}
   m_sharedMaterial: {fileID: 2195392585456599672, guid: b407f166496c4264baf0633d5731ce53, type: 2}
@@ -4276,7 +4279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92586595, b: 0.8160377, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4654,7 +4657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.7730687, b: 0.6166341, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6639,7 +6642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.7730687, b: 0.6166341, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6943,7 +6946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92586595, b: 0.8160377, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
