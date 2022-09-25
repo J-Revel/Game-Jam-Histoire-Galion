@@ -22,6 +22,7 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
+        
     }
 
     IEnumerator UpdateValueCoroutine()

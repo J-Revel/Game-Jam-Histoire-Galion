@@ -14,7 +14,7 @@ public class MapAnimationDB : MonoBehaviour
         foreach(MapAnimationData data in animatedMapGameObjects)
         {
             typeToObjectDico.Add(data.type, data.objectAnimated);
-            data.objectAnimated.SetActive(false);
+            // data.objectAnimated.SetActive(false);
         }
     }
 

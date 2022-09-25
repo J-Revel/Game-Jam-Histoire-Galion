@@ -307,8 +307,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 416, y: 79}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -353,11 +353,8 @@ MonoBehaviour:
   forceIntensity: 50
   attractionIntensity: 1
   friction: 0.8
-  velocity: {x: 0, y: 0}
-  targetPosition: {x: 0, y: 0}
   maxTargetOffset: {x: 20, y: 0.32}
-  maxRotation: 3
-  rotationSpeed: 0
+  maxRotation: 2
   rotationForceIntensity: 0.1
-  attractionRotationForce: 0.3
+  attractionRotationForce: 0.2
   rotationFriction: 0.8
