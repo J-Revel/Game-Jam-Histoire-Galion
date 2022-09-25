@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour, LogicDelegate
         this.state = new GameState();
 
         this.mapAnimationDB.Init();
+        this.EnqueueEventData();
         this.OnNextGameStep();
     }
 
@@ -115,9 +116,17 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnInteractiveNewsHideEnded()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsHideEnded");
-        this.state.InteractableViewDone();
 
+        this.state.InteractableViewDone();
         this.state.ApplyEffects(this.currentInteractiveNews.GetGaugeEffects());
+        this.EnqueueEventData();
+
+        this.currentInteractiveNews = null;
+        this.OnNextGameStep();
+    }
+
+    private void EnqueueEventData()
+    {
         List<EventData> potentialEventDataList = this.GetPotentialEvents();
 
         foreach (EventData eventData in potentialEventDataList)
@@ -125,9 +134,6 @@ public class GameController : MonoBehaviour, LogicDelegate
             scenarioData.OnEventPick(eventData);
             this.eventQueue.Enqueue(eventData);
         }
-
-        this.currentInteractiveNews = null;
-        this.OnNextGameStep();
     }
 
     public void DisplayAnimationView(EventData data)
