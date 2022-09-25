@@ -842,8 +842,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -122.84, y: 57.509995}
-  m_SizeDelta: {x: 160, y: 54.2415}
+  m_AnchoredPosition: {x: -105, y: 41}
+  m_SizeDelta: {x: 175, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4208502304304977380
 CanvasRenderer:
@@ -1045,6 +1045,7 @@ GameObject:
   - component: {fileID: 4208502304903786900}
   - component: {fileID: 4208502304903786906}
   - component: {fileID: 4208502304903786901}
+  - component: {fileID: 2162016310638580425}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1171,6 +1172,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2162016310638580425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4208502304903786903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad03d489cb70bbf4988c4125bc3e9c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverStartSound: '{5cea5187-8111-4347-b02a-8de76a0f2578}'
+  hoverEndSound: 
+  clickSound: '{ef299ee7-f651-4d58-9772-e282813d1b25}'
 --- !u!1 &4208502304946405375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,7 +1428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   writeDuration: 1.5
-  typewriterOneshotSound: '{ef299ee7-f651-4d58-9772-e282813d1b25}'
+  typewriterOneshotSound: '{5064f0fb-e0e3-474a-8397-bbf8bea7405b}'
   typewriterSound: 
 --- !u!1 &5830791072679925142
 GameObject:

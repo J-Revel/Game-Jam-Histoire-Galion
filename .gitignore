@@ -2,5 +2,7 @@
 Project/.vscode
 Project/Logs
 Builds
-
+*.log
+Project/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 Project/fmod_editor.log
+*.log
