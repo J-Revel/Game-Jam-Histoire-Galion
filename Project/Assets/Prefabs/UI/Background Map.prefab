@@ -2532,6 +2532,22 @@ PrefabInstance:
       propertyPath: offsetTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: repeatDelay
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: shouldBeRandom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: shouldBeRepeated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: randomPositionRange
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8418672092628845062, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
       propertyPath: m_Name
       value: Explosion (1)
@@ -2637,6 +2653,22 @@ PrefabInstance:
     - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
       propertyPath: offsetTime
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: repeatDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: shouldBeRandom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: shouldBeRepeated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: randomPositionRange
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8418672092628845062, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
       propertyPath: m_Name
@@ -3273,6 +3305,22 @@ PrefabInstance:
     - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
       propertyPath: offsetTime
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: repeatDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: shouldBeRandom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: shouldBeRepeated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 309387060066394549, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
+      propertyPath: randomPositionRange
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8418672092628845062, guid: 5572a9013b7794b23a8bb8d1a521c36e, type: 3}
       propertyPath: m_Name
