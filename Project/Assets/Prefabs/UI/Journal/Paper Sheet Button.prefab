@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5525297829277938625}
   - component: {fileID: 5525297829277938626}
   - component: {fileID: 5525297829277938627}
+  - component: {fileID: 8846336145129097006}
   m_Layer: 5
   m_Name: Title Section Button (3)
   m_TagString: Untagged
@@ -122,6 +123,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8846336145129097006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525297829277938629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad03d489cb70bbf4988c4125bc3e9c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverStartSound: '{5cea5187-8111-4347-b02a-8de76a0f2578}'
+  hoverEndSound: 
+  clickSound: '{1867144f-dae1-418f-9a23-1bbff694db25}'
 --- !u!1 &5525297829404734980
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +300,6 @@ GameObject:
   - component: {fileID: 7626040541518161342}
   - component: {fileID: 636809401001723023}
   - component: {fileID: 8313634276729088518}
-  - component: {fileID: 8978619414472484486}
   m_Layer: 5
   m_Name: Paper Sheet Button
   m_TagString: Untagged
@@ -359,18 +374,3 @@ MonoBehaviour:
   rotationForceIntensity: 0.1
   attractionRotationForce: 0.5
   rotationFriction: 0.8
---- !u!114 &8978619414472484486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487207511423296128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad03d489cb70bbf4988c4125bc3e9c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverStartSound: '{5cea5187-8111-4347-b02a-8de76a0f2578}'
-  hoverEndSound: 
-  clickSound: '{1867144f-dae1-418f-9a23-1bbff694db25}'
