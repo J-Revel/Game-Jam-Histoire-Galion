@@ -39,6 +39,7 @@ public class MusicPlayer : MonoBehaviour
                 musicInstance.setParameterByName("NatioFMOD", currentValue);
                 yield return null;
             }
+            currentValue = targetValue;
             musicInstance.setParameterByName("NatioFMOD", targetValue);
         }
 
