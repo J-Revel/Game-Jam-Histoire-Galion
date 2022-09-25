@@ -87,6 +87,7 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnAnimableNewsHideEnded()
     {
         Debug.Log("GAME STEP : OnAnimableNewsHideEnded");
+        this.StopMapAnimation();
         this.currentAnimableNew = null;
         this.currentAnimableData = null;
         this.OnNextGameStep();
@@ -224,7 +225,7 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     public void StopMapAnimation()
     {
-        if (mapAnimationDB.TryGet(this.currentAnimableData.id, out GameObject activableGo))
+        if (mapAnimationDB.TryGetDesactivable(this.currentAnimableData.id, out GameObject activableGo))
         {
             activableGo.SetActive(false);
         }

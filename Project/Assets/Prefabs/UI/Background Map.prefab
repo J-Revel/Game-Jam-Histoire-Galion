@@ -601,7 +601,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3409266724432725165}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -663,7 +663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3409266723750308868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3409266724432725165}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3409266723750308869}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -753,8 +753,8 @@ RectTransform:
   m_Children:
   - {fileID: 3409266724583198949}
   - {fileID: 3409266724772650188}
-  - {fileID: 3409266723750308868}
   - {fileID: 3409266723191197726}
+  - {fileID: 3409266723750308868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -778,22 +778,31 @@ MonoBehaviour:
   animatedMapGameObjects:
   - eventID: dc1
     objectAnimated: {fileID: 4894886251662332510}
+    shouldBeDesactivated: 1
   - eventID: dc3
     objectAnimated: {fileID: 7458785081372248720}
+    shouldBeDesactivated: 1
   - eventID: dc4
     objectAnimated: {fileID: 7093329182729390120}
+    shouldBeDesactivated: 1
   - eventID: dc5
     objectAnimated: {fileID: 4894886251662332510}
+    shouldBeDesactivated: 1
   - eventID: dc6
     objectAnimated: {fileID: 2619585565250260291}
+    shouldBeDesactivated: 0
   - eventID: s1
-    objectAnimated: {fileID: 324847306444220113}
+    objectAnimated: {fileID: 7787377762739280555}
+    shouldBeDesactivated: 0
   - eventID: s2
     objectAnimated: {fileID: 5757069864904678882}
+    shouldBeDesactivated: 1
   - eventID: s3
     objectAnimated: {fileID: 4894886251662332510}
+    shouldBeDesactivated: 1
   - eventID: s4
     objectAnimated: {fileID: 4968504617956832428}
+    shouldBeDesactivated: 0
 --- !u!1 &3409266724583198946
 GameObject:
   m_ObjectHideFlags: 0
