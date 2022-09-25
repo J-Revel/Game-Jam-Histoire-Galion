@@ -1543,7 +1543,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - eventId: s0
+    soundEventId: 
+  - eventId: dc1
     soundEventId: '{a2500dca-9e17-491f-a984-d36828d54008}'
+  - eventId: dc2
+    soundEventId: '{84344c3d-5585-4c54-9b0f-1190ff199e4e}'
+  - eventId: dc3
+    soundEventId: '{34726606-eb09-4bbd-8c70-be30bd01b5fc}'
+  - eventId: dc4
+    soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
+  - eventId: dc5
+    soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
+  - eventId: dc6
+    soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
 --- !u!1 &4900200161807968658
 GameObject:
   m_ObjectHideFlags: 0
