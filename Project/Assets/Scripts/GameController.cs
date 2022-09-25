@@ -35,10 +35,6 @@ public class GameController : MonoBehaviour, LogicDelegate
     [SerializeField]
     private MapAnimationDB mapAnimationDB;
 
-    [SerializeField]
-    private Button nextStepButton;
-    // TODO remove global next button when view is implemented
-
     //AnimableNews
     [SerializeField]
     private AnimableNews animableViewPrefab;
@@ -106,14 +102,12 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnInteractiveNewsShowEnded()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsShowEnded");
-        nextStepButton?.onClick.AddListener(this.currentInteractiveNews.Hide);
         // TODO remove global next button when view is implemented
     }
 
     public void OnInteractiveNewsHideStart()
     {
         Debug.Log("GAME STEP : OnInteractiveNewsHideStart");
-        nextStepButton?.onClick.RemoveListener(this.currentInteractiveNews.Hide);
         // TODO remove global next button when view is implemented
     }
 
