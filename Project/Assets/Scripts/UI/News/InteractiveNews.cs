@@ -9,31 +9,17 @@ public class InteractiveNews : MonoBehaviour
     public static float HideAnimationDuration = 1f;
 
     public static LogicDelegate LogicDelegate;
-
-    [SerializeField]
-    private CanvasGroup canvasGroup;
     public List<GaugeEffect> gaugeEffects = new List<GaugeEffect>();
 
     public void Show()
     {
         this.gameObject.SetActive(true);
         LogicDelegate.OnInteractiveNewsShowStart();
-        StartCoroutine(this.AnimateShow(ShowAnimationDuration));
+        this.AnimateShow(ShowAnimationDuration);
     }
 
-    IEnumerator AnimateShow(float duration)
+    void AnimateShow(float duration)
     {
-        float timeElasped = 0f;
-        float fadeRatio = 0f;
-        while(timeElasped < duration)
-        {
-            timeElasped += Time.deltaTime;
-            fadeRatio = timeElasped / duration;
-            if(canvasGroup != null)
-                this.canvasGroup.alpha = fadeRatio;
-            yield return null;
-        }
-
         this.OnShowAnimationEnd();
     }
 
@@ -46,22 +32,6 @@ public class InteractiveNews : MonoBehaviour
     public void Hide()
     {
         LogicDelegate.OnInteractiveNewsHideStart();
-        StartCoroutine(this.AnimateHide(HideAnimationDuration));
-    }
-
-    IEnumerator AnimateHide(float duration)
-    {
-        float timeElasped = 0f;
-        float fadeRatio = 0f;
-        while (timeElasped < duration)
-        {
-            timeElasped += Time.deltaTime;
-            fadeRatio = 1f - timeElasped / duration;
-            if(this.canvasGroup != null)
-                this.canvasGroup.alpha = fadeRatio;
-            yield return null;
-        }
-
         this.OnHideAnimationEnd();
     }
 

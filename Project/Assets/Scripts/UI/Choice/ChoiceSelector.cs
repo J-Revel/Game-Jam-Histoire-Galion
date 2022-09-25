@@ -27,7 +27,9 @@ public class ChoiceSelector : MonoBehaviour
         selectedAnswerMovements = new TranslateTargetMovement[dataHolder.choiceEvent.sections.Length];
         for(int i=0; i<dataHolder.choiceEvent.sections.Length; i++)
         {
-            selectedAnswerMovements[i] = Instantiate(buttonSlots[i], buttonSlots[i].transform.parent);
+            selectedAnswerMovements[i] = Instantiate(buttonSlots[i], exitTarget.position, exitTarget.rotation, buttonSlots[i].transform.parent);
+            selectedAnswerMovements[i].SetTarget(buttonSlots[i].transform);
+            selectedAnswerMovements[i].show = true;
             selectedAnswers[i] = Instantiate(answerButtonPrefab, selectedAnswerMovements[i].transform);
         }
         for(int i=0; i<selectedAnswers.Length; i++)
@@ -49,7 +51,7 @@ public class ChoiceSelector : MonoBehaviour
                         interactiveNews.gaugeEffects.Add(effect);
                     }
                 }
-                interactiveNews.Hide();
+                StartCoroutine(CloseMenuAnimation());
             }
         });
 
@@ -105,7 +107,8 @@ public class ChoiceSelector : MonoBehaviour
         selectorBackgroundGroup.blocksRaycasts = true;
         for(float t=0; t<duration; t += Time.deltaTime)
         {
-            selectorBackgroundGroup.alpha = t / duration;
+            float f = t / duration;
+            selectorBackgroundGroup.alpha = 1 - (1-f)*(1-f);
             yield return null;
         }
         // 
@@ -121,6 +124,7 @@ public class ChoiceSelector : MonoBehaviour
             {
                 answers[i].SetTarget(exitTargets[i]);
                 answers[i].show = true;
+                answers[i].destroyAtEnd = true;
             }
             else
             {
@@ -145,5 +149,25 @@ public class ChoiceSelector : MonoBehaviour
             selectorBackgroundGroup.alpha = 1 - t / duration;
             yield return null;
         }
+    }
+
+    private IEnumerator CloseMenuAnimation()
+    {
+        float duration = 1;
+        for(int i=0; i<selectedAnswerMovements.Length; i++)
+        {
+            selectedAnswerMovements[i].SetTarget(exitTarget);
+            selectedAnswerMovements[i].show = true;
+            yield return new WaitForSeconds(0.1f);
+        }
+        for(float time=duration; time > 0; time -= Time.deltaTime)
+        {
+            float t = time / duration;
+            t = 1 - (1-t)*(1-t);
+            newspaperTransform.pivot = new Vector2((1-t) * (1-t), 1-t);;
+            yield return null;
+        }
+        yield return null;
+        interactiveNews.Hide();
     }
 }

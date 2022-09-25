@@ -9,6 +9,7 @@ public class TranslateTargetMovement : MonoBehaviour
     public float transitionTime;
     public float transitionDuration = 0.5f;
     public bool show = false;
+    public bool destroyAtEnd = false;
 
     private void Start()
     {
@@ -22,6 +23,10 @@ public class TranslateTargetMovement : MonoBehaviour
         float t = transitionTime / transitionDuration;
         t = 1 - (1-t)*(1-t);
         transform.position = Vector3.Lerp(startPos, target.position, t);
+        if(t >= 1 && destroyAtEnd)
+        {
+            Destroy(gameObject);
+        }
     }
     
     public void SetTarget(Transform target)

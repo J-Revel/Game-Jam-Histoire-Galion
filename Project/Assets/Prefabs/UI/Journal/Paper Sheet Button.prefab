@@ -356,5 +356,5 @@ MonoBehaviour:
   maxTargetOffset: {x: 20, y: 0.32}
   maxRotation: 2
   rotationForceIntensity: 0.1
-  attractionRotationForce: 0.2
+  attractionRotationForce: 0.5
   rotationFriction: 0.8
