@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9c3281ce9544a482e129cd498eded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingCount: 0
+  startingCount: 5000
   observedController: {fileID: 0}
   textComponent: {fileID: 4615357477442646905}
 --- !u!1 &8020791463442209407
