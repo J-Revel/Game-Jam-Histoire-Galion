@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public interface LogicDelegate
 {
-    public void TriggerMapAnimation(string eventID);
+    public void TriggerMapAnimation();
 
     public void OnAnimableNewsHideEnded();
     public void OnAnimableNewsShowEnded();
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour, LogicDelegate
     private AnimableNews endingScreenPrefab;
     private Queue<EventData> eventQueue = new Queue<EventData>();
     private AnimableNews currentAnimableNew;
+    private EventData currentAnimableData;
 
     //Interactive News
     [SerializeField]
@@ -88,7 +89,9 @@ public class GameController : MonoBehaviour, LogicDelegate
     public void OnAnimableNewsHideEnded()
     {
         Debug.Log("GAME STEP : OnAnimableNewsHideEnded");
+        this.StopMapAnimation();
         this.currentAnimableNew = null;
+        this.currentAnimableData = null;
         this.OnNextGameStep();
     }
 
@@ -138,12 +141,14 @@ public class GameController : MonoBehaviour, LogicDelegate
             // TODO set a different prefab and a replay button ?? SceneManager.LoadScene(SceneManager.GetActiveScene().name); ??
             this.ended = true;
             this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(endingScreenPrefab, this.transform);
+            this.currentAnimableData = data;
             this.currentAnimableNew.SetData(data);
             this.currentAnimableNew.Show();
         }
         else
         {
             this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(animableViewPrefab, this.transform);
+            this.currentAnimableData = data;
             this.currentAnimableNew.SetData(data);
             this.currentAnimableNew.Show();
         }
@@ -212,11 +217,20 @@ public class GameController : MonoBehaviour, LogicDelegate
         return eventDataList;
     }
 
-    public void TriggerMapAnimation(string eventID)
+    public void TriggerMapAnimation()
     {
-        GameObject animationElement = mapAnimationDB.Get(eventID);
-        if(animationElement != null)
-            animationElement.SetActive(true);
+        if(mapAnimationDB.TryGet(this.currentAnimableData.id, out GameObject activableGo))
+        {
+            activableGo.SetActive(true);
+        }
+    }
+
+    public void StopMapAnimation()
+    {
+        if (mapAnimationDB.TryGetDesactivable(this.currentAnimableData.id, out GameObject activableGo))
+        {
+            activableGo.SetActive(false);
+        }
     }
 
     private void OnNextGameStep()
