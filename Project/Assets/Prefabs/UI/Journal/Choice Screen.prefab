@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 4208502304304977380}
   - component: {fileID: 4208502304304977383}
   - component: {fileID: 4208502304304977382}
-  - component: {fileID: 8763566612587320466}
+  - component: {fileID: 4566853788114714665}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8763566612587320466
+--- !u!114 &4566853788114714665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -936,27 +936,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4208502304304977376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Script: {fileID: 11500000, guid: ad03d489cb70bbf4988c4125bc3e9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  hoverStartSound: '{5cea5187-8111-4347-b02a-8de76a0f2578}'
+  hoverEndSound: 
+  clickSound: '{ef299ee7-f651-4d58-9772-e282813d1b25}'
 --- !u!1 &4208502304781512960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1030,6 @@ GameObject:
   - component: {fileID: 4208502304903786900}
   - component: {fileID: 4208502304903786906}
   - component: {fileID: 4208502304903786901}
-  - component: {fileID: 2162016310638580425}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1172,21 +1156,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2162016310638580425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4208502304903786903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad03d489cb70bbf4988c4125bc3e9c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverStartSound: '{5cea5187-8111-4347-b02a-8de76a0f2578}'
-  hoverEndSound: 
-  clickSound: '{ef299ee7-f651-4d58-9772-e282813d1b25}'
 --- !u!1 &4208502304946405375
 GameObject:
   m_ObjectHideFlags: 0
