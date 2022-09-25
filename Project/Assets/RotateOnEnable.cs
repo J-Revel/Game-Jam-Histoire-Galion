@@ -32,9 +32,10 @@ public class RotateOnEnable : MonoBehaviour
     IEnumerator Rotate()
     {
         //Init
-        this.image.enabled = false;
-        float finalAngle = this.transform.rotation.z;
+        float finalAngle = this.transform.rotation.eulerAngles.z;
         float initialAngle = finalAngle - rotation;
+        this.rectTransform.rotation = Quaternion.Euler(0f, 0f, initialAngle); ;
+
         float timeElasped = 0f;
         float elapsedRatio = 0f;
         float smoothElapsedRatio = 0f;
@@ -45,7 +46,6 @@ public class RotateOnEnable : MonoBehaviour
             timeElasped += Time.deltaTime;
             yield return null;
         }
-        this.image.enabled = true;
 
         // Animation
         timeElasped = 0f;
