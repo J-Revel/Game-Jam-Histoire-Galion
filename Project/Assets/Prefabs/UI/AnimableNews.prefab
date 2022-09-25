@@ -1556,6 +1556,32 @@ MonoBehaviour:
     soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
   - eventId: dc6
     soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
+  - eventId: s1
+    soundEventId: 
+  - eventId: s2
+    soundEventId: '{d9d1ea03-e336-441f-bcd8-de8031b4f487}'
+  - eventId: s3
+    soundEventId: '{0947b6ca-325c-4c03-abb0-23416ad597f9}'
+  - eventId: s4
+    soundEventId: 
+  - eventId: e1
+    soundEventId: 
+  - eventId: e2
+    soundEventId: 
+  - eventId: e22
+    soundEventId: '{a2500dca-9e17-491f-a984-d36828d54008}'
+  - eventId: e3
+    soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
+  - eventId: e4
+    soundEventId: '{899fa347-4fae-44e4-b62c-338b9d50188b}'
+  - eventId: e5
+    soundEventId: 
+  - eventId: e6
+    soundEventId: '{22f45775-20b2-436a-a999-8391b874230f}'
+  - eventId: e8
+    soundEventId: 
+  - eventId: e9
+    soundEventId: '{f332b13f-5b5e-44d9-b896-818a14df254f}'
 --- !u!1 &4900200161807968658
 GameObject:
   m_ObjectHideFlags: 0
