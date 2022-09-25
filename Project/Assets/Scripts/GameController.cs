@@ -49,6 +49,9 @@ public class GameController : MonoBehaviour, LogicDelegate
     private InteractiveNews interactiveNewsPrefab;
     private InteractiveNews currentInteractiveNews;
 
+    [SerializeField]
+    private MoneyCounter moneyCounter;
+
     //Effect
     [SerializeField]
     private Image blackBackground;
@@ -57,6 +60,7 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     void Start()
     {
+        GameState.MoneyCounter = moneyCounter;
         InteractiveNews.LogicDelegate = this;
         AnimableNews.LogicDelegate = this;
         this.state = new GameState();

@@ -19,6 +19,8 @@ public class GameState
     public int GlobalNationalism = 0;
     public int Money = 5000;
 
+    public static MoneyCounter MoneyCounter;
+
     public GameState()
     {
 
@@ -28,6 +30,7 @@ public class GameState
     {
         this.Progression++;
         this.Money -= PUBLISHING_COST;
+        MoneyCounter.EnqueueChanges(-PUBLISHING_COST);
     }
 
     public void ApplyEffects(List<GaugeEffect> effects)
@@ -84,6 +87,7 @@ public class GameState
                 break;
             case MONEY_ID:
                 this.Money += effect.effect;
+                MoneyCounter.EnqueueChanges(effect.effect);
                 break;
             case PROGRESSION_ID:
                 this.Progression += effect.effect;

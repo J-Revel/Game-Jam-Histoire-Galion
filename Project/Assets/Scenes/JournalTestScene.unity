@@ -414,15 +414,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6015739385619944853, guid: b0f9d622bc9e145978c38e5ed240a7d5, type: 3}
   m_PrefabInstance: {fileID: 6015739385810841160}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1973484510 stripped
+--- !u!114 &1973484511 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6015739385619944854, guid: b0f9d622bc9e145978c38e5ed240a7d5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6800094163473682655, guid: b0f9d622bc9e145978c38e5ed240a7d5, type: 3}
   m_PrefabInstance: {fileID: 6015739385810841160}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aa9c3281ce9544a482e129cd498eded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2015701845
@@ -767,33 +767,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 916959329}
     m_Modifications:
     - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
+      propertyPath: moneyCounter
+      value: 
+      objectReference: {fileID: 1973484511}
+    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
       propertyPath: scenarioData
       value: 
       objectReference: {fileID: 2015701846}
     - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
-      propertyPath: forcedEventId
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
       propertyPath: mapAnimationDB
       value: 
       objectReference: {fileID: 1846309416098258365}
-    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
-      propertyPath: nextStepButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
-      propertyPath: blackBackground
-      value: 
-      objectReference: {fileID: 1973484510}
-    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
-      propertyPath: endingScreenPrefab
-      value: 
-      objectReference: {fileID: 7598929204216431054, guid: f740fc22ac2579946a8f869a4c772c81, type: 3}
-    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
-      propertyPath: interactiveNewsPrefab
-      value: 
-      objectReference: {fileID: 1594738354, guid: 7e96fb7f4c613274eba8a521765c666c, type: 3}
     - target: {fileID: 1052537633972410133, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -995,9 +979,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6800094163473682655, guid: b0f9d622bc9e145978c38e5ed240a7d5, type: 3}
-      propertyPath: observedController
-      value: 
-      objectReference: {fileID: 4494604071744454576}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f9d622bc9e145978c38e5ed240a7d5, type: 3}
