@@ -843,6 +843,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1973484510}
     - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
+      propertyPath: endingScreenPrefab
+      value: 
+      objectReference: {fileID: 7598929204216431054, guid: f740fc22ac2579946a8f869a4c772c81, type: 3}
+    - target: {fileID: 1032000454412673516, guid: 81173fabdc37745489a0487cd59faae6, type: 3}
       propertyPath: interactiveNewsPrefab
       value: 
       objectReference: {fileID: 1594738354, guid: 7e96fb7f4c613274eba8a521765c666c, type: 3}

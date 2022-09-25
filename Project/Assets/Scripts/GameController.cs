@@ -39,6 +39,8 @@ public class GameController : MonoBehaviour, LogicDelegate
     //AnimableNews
     [SerializeField]
     private AnimableNews animableViewPrefab;
+    [SerializeField]
+    private AnimableNews endingScreenPrefab;
     private Queue<EventData> eventQueue = new Queue<EventData>();
     private AnimableNews currentAnimableNew;
 
@@ -135,7 +137,7 @@ public class GameController : MonoBehaviour, LogicDelegate
         {
             // TODO set a different prefab and a replay button ?? SceneManager.LoadScene(SceneManager.GetActiveScene().name); ??
             this.ended = true;
-            this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(animableViewPrefab, this.transform);
+            this.currentAnimableNew = GameObject.Instantiate<AnimableNews>(endingScreenPrefab, this.transform);
             this.currentAnimableNew.SetData(data);
             this.currentAnimableNew.Show();
         }

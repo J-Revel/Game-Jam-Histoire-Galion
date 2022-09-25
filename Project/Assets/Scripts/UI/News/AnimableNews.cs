@@ -16,6 +16,7 @@ public class AnimableNews : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI textComponent;
+    public TextMeshProUGUI titleComponent;
 
     [SerializeField]
     private Button buttonComponent;
@@ -96,6 +97,7 @@ public class AnimableNews : MonoBehaviour
 
     public void SetData(EventData data)
     {
+        this.titleComponent.text = data.title;
         this.textComponent.text = data.text;
     }
 }
