@@ -691,6 +691,7 @@ MonoBehaviour:
   musicSound: '{682b1e84-0b86-443c-beaf-6cf8c8e4e152}'
   valueUpdateDuration: 3
   currentValue: 0
+  debugValue: 100
 --- !u!4 &2088102305
 Transform:
   m_ObjectHideFlags: 0
