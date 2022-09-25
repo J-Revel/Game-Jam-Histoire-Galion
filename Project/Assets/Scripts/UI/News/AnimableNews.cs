@@ -61,7 +61,7 @@ public class AnimableNews : MonoBehaviour
         LogicDelegate.OnAnimableNewsShowEnded();
         if (this.animationEventID != null)
         {
-            LogicDelegate.TriggerMapAnimation(animationEventID);
+            LogicDelegate.TriggerMapAnimation();
         }
         this.AddEvent();
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class MapAnimationDB : MonoBehaviour
@@ -7,31 +8,30 @@ public class MapAnimationDB : MonoBehaviour
     [SerializeField]
     private List<MapAnimationData> animatedMapGameObjects;
 
-    private Dictionary<string, GameObject> typeToObjectDico = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> idToObjectDico = new Dictionary<string, GameObject>();
 
     public void Init()
     {
         foreach(MapAnimationData data in animatedMapGameObjects)
         {
-            typeToObjectDico.Add(data.eventID, data.objectAnimated);
+            idToObjectDico.Add(data.eventID, data.objectAnimated);
             //data.objectAnimated.SetActive(false);
         }
     }
 
-    public GameObject Get(string eventID)
+    public bool TryGet(string eventID, out GameObject gameObject)
     {
-        foreach (MapAnimationData mapData in this.animatedMapGameObjects)
+        if(idToObjectDico.ContainsKey(eventID))
         {
-            if (mapData.eventID.Equals(eventID))
-            {
-                if(mapData.objectAnimated != null)
-                    Debug.Assert(mapData.objectAnimated.activeInHierarchy == false, "This animation has already been triggered !", this);
-                return mapData.objectAnimated;
-            }
+            gameObject = idToObjectDico[eventID];
+            return true;
         }
-
-        Debug.LogError($"No animation have been found for the eventID '{eventID}'", this);
-        return null;
+        else
+        {
+            Debug.LogWarning($"No animation have been found for the eventID '{eventID}'", this);
+            gameObject = null;
+            return false;
+        }
     }
 }
 
