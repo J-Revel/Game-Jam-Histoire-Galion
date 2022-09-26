@@ -23,7 +23,7 @@ public class AnimatorDelayOnEnable : MonoBehaviour
     private RectTransform rectTransform;
 
     // Start is called before the first frame update
-    private void Start()
+    private void OnEnable()
     {
         this.rectTransform = transform as RectTransform;
         initialPosition = this.rectTransform.anchoredPosition;
