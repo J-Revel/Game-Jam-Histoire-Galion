@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -241,8 +242,36 @@ public class GameController : MonoBehaviour, LogicDelegate
     {
         if (mapAnimationDB.TryGetDesactivable(this.currentAnimableData.id, out GameObject activableGo))
         {
-            activableGo.SetActive(false);
+            StartCoroutine(FadeOutAndDisable(activableGo, 0.6f));
         }
+    }
+
+    IEnumerator FadeOutAndDisable(GameObject go, float duration)
+    {
+
+        //Get canvas group or create it
+        CanvasGroup canvasGroup = go.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = go.AddComponent<CanvasGroup>();
+        }
+
+        float timeElasped = 0f;
+        float elapsedRatio = 0f;
+
+
+        // Animate
+        timeElasped = 0f;
+        while (timeElasped < duration)
+        {
+            timeElasped += Time.deltaTime;
+            elapsedRatio = timeElasped / duration;
+            canvasGroup.alpha = 1f - elapsedRatio;
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+        go.SetActive(false);
     }
 
     private void OnNextGameStep()
