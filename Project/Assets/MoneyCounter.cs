@@ -76,7 +76,7 @@ public class MoneyCounter : MonoBehaviour
         this.textInfoComponent.text = data.Description + ": " + (data.Amount > 0? "+" : "") + data.Amount.ToString();
 
         float timeElasped = 0f;
-        float duration = 2f;
+        float duration = 1f;
         float elapsedRatio = 0f;
 
         // Wait before animation
