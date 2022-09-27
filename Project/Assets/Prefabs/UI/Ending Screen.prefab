@@ -562,8 +562,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Merci d'avoir jou\xE9 \xE0 Histoire de nations, un jeu p\xE9dagogique
-    sur la r\xE9\xE9criture de l'histoire \xE0 des fins nationalistes. N'h\xE9sites
+  m_text: "Merci d'avoir jou\xE9 \xE0 Une Histoire de(ux) nations, un jeu p\xE9dagogique
+    sur la r\xE9\xE9criture de l'histoire \xE0 des fins nationalistes. N'h\xE9site
     pas \xE0 rejouer pour d\xE9couvrir le c\xF4t\xE9 oppos\xE9 de l'histoire que
     tu viens de vivre.\r\n\r\nTu as d\xE9couvert une des 9 fins possibles."
   m_isRightToLeft: 0

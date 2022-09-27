@@ -21,7 +21,7 @@ public class EventBoundSound : MonoBehaviour
         bool soundFound = false;
         foreach(EventAudio sound in sounds)
         {
-            if(sound.eventId == news.id)
+            if(sound.eventId == news.id && sound.soundEventId.Length > 0)
             {
                 soundInstance = FMODUnity.RuntimeManager.CreateInstance(sound.soundEventId);
                 soundFound = true;

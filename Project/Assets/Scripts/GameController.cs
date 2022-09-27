@@ -26,6 +26,9 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     // For debug
     public string forcedEventId;
+    public string currentDate;
+    public EventData presentationEvent;
+    public EventData currentEvent;
 
     // Scenario Data
     private const char END_EVENT_CHAR_ID = 'e';
@@ -58,6 +61,8 @@ public class GameController : MonoBehaviour, LogicDelegate
     private Image blackBackground;
 
     private bool ended = false;
+
+    public RecapMenuDisplay recapMenuDisplay;
 
     void Start()
     {
@@ -143,6 +148,13 @@ public class GameController : MonoBehaviour, LogicDelegate
 
     public void DisplayAnimationView(EventData data)
     {
+        currentDate = data.date;
+        if(data.id == "pid1" || data.id == "pid2")
+        {
+            presentationEvent = data;
+        }
+        currentEvent = data;
+        recapMenuDisplay.UpdateDisplay(presentationEvent, currentEvent);
         // Detect if this event describe a game end
         if (data.id[0].Equals(END_EVENT_CHAR_ID))
         {
@@ -294,6 +306,8 @@ public class GameController : MonoBehaviour, LogicDelegate
         }
 
         this.currentInteractiveNews = Instantiate(interactiveNewsPrefab, transform);
+        currentInteractiveNews.gameController = this;
+        currentDate = this.scenarioData.choiceEvents[this.state.Progression].date;
         currentInteractiveNews.gameObject.AddComponent<ChoiceEventDataHolder>().choiceEvent = this.scenarioData.choiceEvents[this.state.Progression];
 
         this.currentInteractiveNews.Show();
@@ -304,4 +318,10 @@ public class GameController : MonoBehaviour, LogicDelegate
         //TODO on end what happen ?
         Debug.Log("End Triggered");
     }
+
+    public void ShowRecapPopup()
+    {
+        recapMenuDisplay.Show();
+    }
+
 }

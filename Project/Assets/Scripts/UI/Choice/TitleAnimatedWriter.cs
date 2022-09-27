@@ -29,10 +29,10 @@ public class TitleAnimatedWriter : MonoBehaviour
     public IEnumerator WriteTextCoroutine(string newText)
     {
         typewriterOneshotSoundInstance.start();
-        for(int cursor = 0; cursor < newText.Length; cursor++)
+        for(int cursor = 0; cursor <= newText.Length; cursor++)
         {
             typewriterSoundInstance.start();
-            text.text = newText.Substring(0, cursor) + "<alpha=#00>"+newText.Substring(cursor, newText.Length - cursor);
+            text.text = newText.Substring(0, cursor) + "<alpha=#00>"+ (cursor < newText.Length ? newText.Substring(cursor, newText.Length - cursor) : "");
             yield return new WaitForSeconds(writeDuration / newText.Length);
         };
     }

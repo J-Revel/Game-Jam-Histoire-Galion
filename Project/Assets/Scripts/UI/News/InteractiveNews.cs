@@ -11,6 +11,8 @@ public class InteractiveNews : MonoBehaviour
     public static LogicDelegate LogicDelegate;
     public List<GaugeEffect> gaugeEffects = new List<GaugeEffect>();
 
+    public GameController gameController;
+
     public void Show()
     {
         this.gameObject.SetActive(true);

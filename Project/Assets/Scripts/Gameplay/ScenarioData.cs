@@ -144,7 +144,6 @@ public class ScenarioData : MonoBehaviour
             string effectText = split.Substring(separatorIndex+1);
             GaugeEffect effect = new GaugeEffect();
             effect.gauge = gaugeName;
-            Debug.Log("PARSE " + effectText.Substring(0, effectText.Length - 1));
             try {
                 effect.effect = int.Parse(effectText.Substring(0, effectText.Length - 1));
             }

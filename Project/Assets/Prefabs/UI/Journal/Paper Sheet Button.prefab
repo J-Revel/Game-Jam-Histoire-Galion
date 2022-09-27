@@ -135,9 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad03d489cb70bbf4988c4125bc3e9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverStartSound: '{5cea5187-8111-4347-b02a-8de76a0f2578}'
+  hoverStartSound: event:/UI/UI HOVER
   hoverEndSound: 
-  clickSound: '{1867144f-dae1-418f-9a23-1bbff694db25}'
+  clickSound: event:/UI/UI VALIDATE
 --- !u!1 &5525297829404734980
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class ChoiceSelector : MonoBehaviour
     public Transform exitTarget;
     public CanvasGroup selectorBackgroundGroup;
     public TitleAnimatedWriter titleAnimatedWriter;
+    public GameController gameController;
+    
 
     private IEnumerator Start()
     {
@@ -186,5 +188,10 @@ public class ChoiceSelector : MonoBehaviour
         }
         yield return null;
         interactiveNews.Hide();
+    }
+
+    public void ShowRecapPopup()
+    {
+        interactiveNews.gameController.ShowRecapPopup();
     }
 }

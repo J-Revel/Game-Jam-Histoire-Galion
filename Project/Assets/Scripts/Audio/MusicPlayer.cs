@@ -10,6 +10,9 @@ public class MusicPlayer : MonoBehaviour
     private FMOD.Studio.EventInstance musicInstance;
     public float valueUpdateDuration = 0.5f;
     public float currentValue = 0;
+    public float debugValue = 100;
+    public bool debugMode = false;
+    public string parameterName = "NatioFMOD";
 
     void Start()
     {
@@ -20,12 +23,22 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        
+        if(debugMode)
+        {
+            StopAllCoroutines();
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(parameterName, debugValue);
+        }
     }
 
     IEnumerator UpdateValueCoroutine()
     {
         yield return null;
+        // currentValue = 100;
+        // for(float time=0; time < 10; time += Time.deltaTime)
+        // {
+        //     musicInstance.setParameterByName("NatioFMOD", currentValue);
+        //         yield return null;
+        // }
         currentValue = gameController.state.GlobalNationalism;
         while(true)
         {
@@ -36,11 +49,11 @@ public class MusicPlayer : MonoBehaviour
             for(float time=0; time < valueUpdateDuration; time += Time.deltaTime)
             {
                 currentValue = Mathf.Lerp(startValue, targetValue, time / valueUpdateDuration);
-                musicInstance.setParameterByName("NatioFMOD", currentValue);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName(parameterName, currentValue);
                 yield return null;
             }
             currentValue = targetValue;
-            musicInstance.setParameterByName("NatioFMOD", targetValue);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(parameterName, targetValue);
         }
 
     }
