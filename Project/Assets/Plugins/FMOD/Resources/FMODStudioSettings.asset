@@ -215,8 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
   HasSourceProject: 0
-  HasPlatforms: 0
-  sourceProjectPath: 
+  HasPlatforms: 1
+  sourceProjectPath: ../../../FMOD Studio/Chypatriote/Chypatriote.fspro
   sourceBankPath: Assets/Audio
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
@@ -228,7 +228,7 @@ MonoBehaviour:
   ImportType: 0
   TargetAssetPath: FMODBanks
   TargetBankFolder: 
-  EventLinkage: 0
+  EventLinkage: 1
   LoggingLevel: 2
   SpeakerModeSettings: []
   SampleRateSettings: []
